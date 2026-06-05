@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prescrição Médica — CMM Parintins</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; font-size: 13px; background: #e8ecf2; color: #222; }
+header { background: #1a4a7a; color: #fff; padding: 8px 16px; }
+header h1 { font-size: 14px; font-weight: bold; }
+.container { max-width: 880px; margin: 20px auto; padding: 20px; }
+.section { background: #fff; border: 1px solid #d6dce8; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.section-title { font-size: 11px; font-weight: bold; color: #4a5568; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid #edf0f7; }
+.form-group { margin-bottom: 10px; }
+.form-group label { font-size: 10px; color: #555; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 3px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 6px 8px; border: 1px solid #c8d0de; border-radius: 5px; font-size: 12px; }
+.btn { background: #1a4a7a; color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.btn:hover { background: #0f3360; }
+.status { padding: 10px; background: #e8f5e9; border-radius: 5px; margin-bottom: 10px; color: #2e7d32; }
+.error { background: #ffebee; color: #c62828; }
+</style>
+</head>
+<body>
+<header>
+  <h1>✚ Prescrição Médica — CMM Parintins</h1>
+</header>
+
+<div class="container">
+  <div class="section">
+    <div class="section-title">Status</div>
+    <div class="status" id="status">✓ Servidor conectado com sucesso!</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pacientes</div>
+    <div class="form-group">
+      <label>Nome do Paciente</label>
+      <input type="text" id="p-nome" placeholder="Nome completo">
+    </div>
+    <div class="form-group">
+      <label>Leito</label>
+      <input type="text" id="p-leito" placeholder="Ex: 02">
+    </div>
+    <div class="form-group">
+      <label>Registro</label>
+      <input type="text" id="p-reg" placeholder="Ex: 66679/25">
+    </div>
+    <button class="btn" onclick="salvarPaciente()">💾 Salvar Paciente</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pacientes Salvos</div>
+    <div id="pacientes-lista"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Medicamentos</div>
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" id="m-nome" placeholder="Nome do medicamento">
+    </div>
+    <div class="form-group">
+      <label>Dose</label>
+      <input type="text" id="m-dose" placeholder="Ex: 500mg">
+    </div>
+    <button class="btn" onclick="addMedicamento()">➕ Adicionar</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Info</div>
+    <p>Versão Web - Funcionando! ✓</p>
+    <p>Agora vou fazer deploy online para você acessar de qualquer lugar.</p>
+  </div>
+</div>
+
+<script>
+const API = 'http://localhost:3000/api';
+
+async function salvarPaciente() {
+  const dados = {
+    nome: document.getElementById('p-nome').value,
+    leito: document.getElementById('p-leito').value,
+    registro: document.getElementById('p-reg').value
+  };
+
+  try {
+    const res = await fetch(API + '/pacientes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    });
+    const result = await res.json();
+    mostrarStatus('✓ Paciente salvo! ID: ' + result.id);
+    carregarPacientes();
+  } catch (e) {
+    mostrarStatus('✗ Erro: ' + e.message, true);
+  }
+}
+
+async function carregarPacientes() {
+  try {
+    const res = await fetch(API + '/pacientes');
+    const lista = await res.json();
+    const el = document.getElementById('pacientes-lista');
+    
+    if (lista.length === 0) {
+      el.innerHTML = '<p style="color: #aaa;">Nenhum paciente salvo</p>';
+      return;
+    }
+    
+    el.innerHTML = lista.map(p => `
+      <div style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px;">
+        <strong>${p.nome}</strong> - Leito ${p.leito} - ${p.registro}
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function addMedicamento() {
+  const nome = document.getElementById('m-nome').value;
+  if (nome) {
+    mostrarStatus('✓ Medicamento adicionado: ' + nome);
+    document.getElementById('m-nome').value = '';
+  }
+}
+
+function mostrarStatus(msg, erro = false) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status' + (erro ? ' error' : '');
+}
+
+// Carregar na inicialização
+carregarPacientes();
+</script>
+</body>
+</html>

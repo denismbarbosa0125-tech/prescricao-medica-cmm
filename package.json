@@ -1,0 +1,35 @@
+{
+  "name": "prescricao-medica-cmm",
+  "version": "1.0.0",
+  "description": "Sistema de Prescrição Médica - Enfermaria CMM Parintins",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build-win": "electron-builder --win --x64",
+    "web": "node server.js"
+  },
+  "build": {
+    "appId": "br.cmm.prescricao",
+    "productName": "Prescrição Médica CMM",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Prescrição Médica CMM"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "docx": "^8.5.0",
+    "express": "^4.22.2",
+    "mammoth": "^1.6.0"
+  }
+}

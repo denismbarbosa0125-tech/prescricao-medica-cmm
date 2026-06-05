@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prescrição Médica — Enfermaria Clínica Médica</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;font-size:13px;background:#e8ecf2;color:#222}
+header{background:#1a4a7a;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+header h1{font-size:14px;font-weight:bold;flex:1;min-width:160px}
+.hbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;padding:5px 11px;border-radius:6px;cursor:pointer;font-size:11.5px;font-weight:bold;white-space:nowrap}
+.hbtn:hover{background:rgba(255,255,255,.28)}
+.hbtn.green{background:#256b14;border-color:#1e5410}.hbtn.green:hover{background:#1a4e0e}
+.main{max-width:880px;margin:0 auto;padding:16px}
+.sec{background:#fff;border:1px solid #d6dce8;border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.sec-title{font-size:11px;font-weight:bold;color:#4a5568;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid #edf0f7}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fld{display:flex;flex-direction:column;gap:3px}
+.fld label{font-size:10px;color:#555;font-weight:bold;text-transform:uppercase;letter-spacing:.04em}
+.fld input,.fld select,.fld textarea{border:1px solid #c8d0de;border-radius:5px;padding:6px 8px;font-size:12px;width:100%;font-family:Arial,sans-serif;background:#fff;color:#222}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:#1a4a7a;box-shadow:0 0 0 2px rgba(26,74,122,.1)}
+.fld textarea{resize:vertical;min-height:72px}
+.add-row{display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap;margin-bottom:8px}
+.add-row .fld{flex:1;min-width:80px}
+.comp-row{display:none;margin-bottom:8px;padding:8px 10px;background:#f0f5ff;border-radius:6px;border:1px solid #c5d5f0;gap:8px;align-items:flex-end}
+.comp-row.show{display:flex}
+.comp-row .fld{flex:1}
+.comp-row label{font-size:11px;color:#1a4a7a;font-weight:bold}
+.btn-add{background:#1a4a7a;color:#fff;border:none;border-radius:5px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:bold;height:32px;display:inline-flex;align-items:center;gap:4px;align-self:flex-end;white-space:nowrap}
+.btn-add:hover{background:#0f3360}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;min-height:8px}
+.tag-container{display:inline-flex;flex-direction:column;gap:2px;max-width:100%}
+.tag{display:inline-flex;align-items:stretch;border-radius:20px;font-size:11.5px;font-weight:bold;overflow:hidden}
+.tag-text{padding:4px 8px 4px 12px;cursor:pointer;flex:1}
+.tag-text:hover{text-decoration:underline dotted}
+.tag-edit-btn{padding:3px 6px;cursor:pointer;font-size:12px;opacity:.5;border-left:1px solid rgba(0,0,0,.1)}.tag-edit-btn:hover{opacity:1}
+.tag-rm-btn{padding:3px 8px;cursor:pointer;font-size:13px;opacity:.5;border-left:1px solid rgba(0,0,0,.1)}.tag-rm-btn:hover{opacity:1;color:#c00}
+.tag-d{background:#dff0d4;color:#1a5c07;border:1px solid #a8d48c}
+.tag-a{background:#fff0d4;color:#7c4500;border:1px solid #f0c878}
+.tag-s{background:#dde8fc;color:#1a2c7a;border:1px solid #98b4ee}
+.tag-m{background:#dceefb;color:#0c3360;border:1px solid #88c0e8}
+.edit-row{display:none;gap:4px;align-items:center}
+.edit-row.show{display:flex}
+.edit-row input{flex:1;font-size:12px;padding:4px 8px;border:1px solid #1a4a7a;border-radius:5px}
+.edit-row .eok{background:#1a4a7a;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:bold}
+.edit-row .eok:hover{background:#0f3360}
+.edit-row .ecx{background:#e0e0e0;color:#333;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px}
+.sv-header{display:grid;grid-template-columns:60px repeat(5,1fr) 26px;gap:4px;margin-bottom:4px}
+.sv-header div{font-size:10px;color:#777;text-align:center;font-weight:bold;text-transform:uppercase}
+.sv-row{display:grid;grid-template-columns:60px repeat(5,1fr) 26px;gap:4px;margin-bottom:4px;align-items:center}
+.sv-row input{font-size:11px;text-align:center;border:1px solid #c8d0de;border-radius:4px;padding:4px 2px;width:100%}
+.sv-rm{cursor:pointer;color:#bbb;text-align:center;font-size:16px;line-height:1}.sv-rm:hover{color:#c00}
+#preview-area{display:none}
+#preview-area.visible{display:block}
+.prev-toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#fff;border:1px solid #d6dce8;border-radius:8px;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.prev-toolbar span{font-size:13px;font-weight:bold;color:#1a4a7a}
+.prev-btns{display:flex;gap:8px;flex-wrap:wrap}
+.pbtn{border:1px solid #c8d0de;background:#f5f7fb;border-radius:6px;padding:6px 14px;font-size:12px;cursor:pointer;color:#333;font-weight:bold}
+.pbtn:hover{background:#e8ecf5}
+.pbtn.blue{background:#1a4a7a;color:#fff;border-color:#1a4a7a}.pbtn.blue:hover{background:#0f3360}
+.pbtn.green{background:#256b14;color:#fff;border-color:#256b14}.pbtn.green:hover{background:#1a4e0e}
+.a4-wrap{background:#b0b8c8;padding:20px;border-radius:8px}
+.a4{background:#fff;width:100%;max-width:794px;margin:0 auto;padding:10px 12px;font-family:Arial,sans-serif;font-size:10.5px;line-height:1.45;color:#000;box-shadow:0 4px 24px rgba(0,0,0,.25)}
+.a4-cab{width:100%;border-collapse:collapse;border:1.5px solid #000;margin-bottom:0}
+.a4-cab td{border:1px solid #555;padding:6px 10px;vertical-align:top}
+.a4-cab .col-inst{width:34%;font-size:9px;line-height:1.7;text-align:center}
+.a4-cab .col-inst strong{font-size:10.5px;display:block;margin-bottom:2px;text-transform:uppercase}
+.a4-cab .col-inst span{display:block;font-size:8.5px}
+.a4-cab .col-pac{width:50%;font-size:10px;line-height:1.9}
+.a4-cab .col-pac .pac-nome{font-size:11.5px;font-weight:bold;text-transform:uppercase;display:block;margin-bottom:2px}
+.a4-cab .col-pac b{font-weight:bold}
+.a4-cab .col-reg{width:16%;text-align:center;font-size:10px;font-weight:bold;line-height:2.2;vertical-align:middle}
+.a4-body{width:100%;border-collapse:collapse;border:1.5px solid #000;border-top:none}
+.a4-body > tbody > tr > td{border:1px solid #555;vertical-align:top;padding:0}
+.col-evol{width:32%}
+.col-rx{width:52%}
+.col-hor{width:16%;text-align:center}
+.sec-bar{background:#000;color:#fff;font-size:9px;font-weight:bold;padding:2px 8px;letter-spacing:.08em;text-align:center}
+.evol-text{padding:7px 8px;font-size:10px;line-height:1.6;min-height:220px;white-space:pre-wrap;vertical-align:top}
+.rx-list{padding:0;margin:0;width:100%;border-collapse:collapse}
+.rx-list tr td{padding:3px 7px;border-bottom:.5px solid #ddd;font-size:10px;vertical-align:top;line-height:1.5}
+.rx-list tr td.rn{color:#777;width:18px;font-size:9px;text-align:right;padding-right:4px}
+.rx-list tr td.rh{width:70px;border-left:.5px solid #ddd;text-align:center;font-size:9px;color:#999}
+.dextro-row td{font-size:10px;font-weight:bold;padding:4px 8px;border-top:1px solid #999}
+.sv-wrap{border:1.5px solid #000;border-top:none}
+.sv-titulo{background:#000;color:#fff;font-size:9px;font-weight:bold;padding:2px 8px;letter-spacing:.08em}
+.sv-tbl2{width:100%;border-collapse:collapse}
+.sv-tbl2 th{background:#e8e8e8;font-size:9px;font-weight:bold;padding:3px 4px;border:1px solid #aaa;text-align:center}
+.sv-tbl2 td{font-size:10px;padding:4px 4px;border:1px solid #ccc;text-align:center;min-width:28px;min-height:18px}
+.sv-tbl2 .sv-hora{font-weight:bold;font-size:9px;background:#f5f5f5}
+.a4-ass{margin-top:16px;text-align:right;font-size:10px}
+.a4-assline{display:inline-block;border-top:1px solid #333;padding-top:3px;min-width:200px;text-align:center}
+@media print{
+  header,#form-area,.prev-toolbar,.print-hint{display:none!important}
+  body,html{background:#fff!important}
+  .a4-wrap{background:#fff!important;padding:0!important}
+  .a4{box-shadow:none!important;padding:6mm 8mm!important;max-width:100%!important}
+  #preview-area{display:block!important}
+  .main{padding:0!important;max-width:100%!important}
+  .a4-body,.a4-cab,.sv-wrap{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>✚ Prescrição Médica — Enfermaria</h1>
+  <button class="hbtn" onclick="abrirPainel()" title="Ver pacientes salvos">&#128196; Pacientes</button>
+  <button class="hbtn" onclick="salvarPaciente()" title="Salvar">&#128190; Salvar</button>
+  <button class="hbtn" onclick="avancarDia()" title="Avança dia e incrementa D1→D2">&#128197; Novo dia</button>
+  <button class="hbtn" onclick="novaPrescricao()" title="Novo paciente">&#10133; Novo</button>
+  <span style="border-left:1px solid rgba(255,255,255,.3);height:24px;margin:0 4px"></span>
+  <button class="hbtn" onclick="togglePreview()" id="btn-prev">&#128065; Visualizar</button>
+  <button class="hbtn green" onclick="imprimirDireto()" title="Abrir janela de impressão/PDF">&#128438; Imprimir / PDF</button>
+  <span style="border-left:1px solid rgba(255,255,255,.3);height:24px;margin:0 4px"></span>
+  <button class="hbtn" style="background:#7b3fa0;border-color:#5e2d80" onclick="abrirAlta()">&#128203; Alta</button>
+  <button class="hbtn" style="background:#0e7c60;border-color:#095e49" onclick="abrirReceita()">&#128138; Receita</button>
+  <button class="hbtn" style="background:#555;border-color:#444" onclick="fazerBackup()">&#128190; Backup DB</button>
+  <span style="border-left:1px solid rgba(255,255,255,.3);height:24px;margin:0 4px"></span>
+  <button class="hbtn" style="background:#6b4cc4;border-color:#4a2fa0" onclick="importarWord()">📥 Importar Word</button>
+  <button class="hbtn" style="background:#1a6e5f;border-color:#0f5449" onclick="exportarWord()">📤 Exportar Word</button>
+</header>
+
+<div id="painel-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:12px;padding:20px;width:min(560px,95vw);max-height:80vh;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,.3)">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong style="font-size:14px;color:#1a4a7a">&#128196; Pacientes Internados</strong>
+      <button onclick="fecharPainel()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#888">&#10005;</button>
+    </div>
+    <input id="painel-busca" type="text" placeholder="Buscar por nome ou leito..." oninput="renderPainel()" style="border:1px solid #c8d0de;border-radius:5px;padding:7px 10px;font-size:12px"/>
+    <div id="painel-lista" style="overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:6px"></div>
+    <p style="font-size:10px;color:#aaa;text-align:center">Os dados ficam salvos neste computador/navegador</p>
+  </div>
+</div>
+
+<div id="toast" style="display:none;position:fixed;bottom:24px;right:24px;background:#1a4a7a;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:bold;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2)"></div>
+
+<div id="alta-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px">
+<div style="background:#fff;border-radius:10px;width:min(820px,98vw);margin:auto;box-shadow:0 8px 40px rgba(0,0,0,.35);overflow:hidden">
+  <div style="background:#7b3fa0;color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between">
+    <strong style="font-size:14px">📋 Resumo de Alta — Editar e Imprimir</strong>
+    <button onclick="fecharAlta()" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1">&#10005;</button>
+  </div>
+  <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px" id="alta-form">
+    <div style="grid-column:span 2;font-size:11px;color:#7b3fa0;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid #e8d8f5">Dados do Paciente</div>
+    <div class="fld"><label>Nome</label><input id="a-nome" type="text"/></div>
+    <div class="fld"><label>Registro</label><input id="a-reg" type="text"/></div>
+    <div class="fld"><label>Sexo</label>
+      <select id="a-sexo"><option>MASCULINO</option><option>FEMININO</option></select>
+    </div>
+    <div class="fld"><label>Data de Nascimento / Idade</label><input id="a-dn" type="text" placeholder="Ex: 19/08/1998 — 24 ANOS"/></div>
+    <div class="fld"><label>Data de Internação</label><input id="a-adm" type="text"/></div>
+    <div class="fld"><label>Data de Saída</label><input id="a-saida" type="date" oninput="calcDias()"/></div>
+    <div class="fld"><label>Dias de Hospitalização</label><input id="a-dias" type="text" placeholder="Calculado automaticamente"/></div>
+    <div style="grid-column:span 2;font-size:11px;color:#7b3fa0;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid #e8d8f5;margin-top:6px">Conteúdo Clínico</div>
+    <div class="fld" style="grid-column:span 2"><label>Histórico Clínico</label>
+      <textarea id="a-hist" style="min-height:70px"></textarea></div>
+    <div class="fld" style="grid-column:span 2"><label>Diagnóstico</label>
+      <input id="a-diag" type="text"/></div>
+    <div class="fld"><label>Tratamento</label>
+      <select id="a-trat"><option>CLÍNICO</option><option>CIRÚRGICO</option><option>CLÍNICO-CIRÚRGICO</option><option>CONSERVADOR</option></select>
+    </div>
+    <div class="fld"><label>Evolução / Complicações</label>
+      <input id="a-evol" type="text" placeholder="Ex: MELHORADO, COMPLICAÇÕES: NENHUMA"/></div>
+    <div class="fld" style="grid-column:span 2"><label>Orientações ao Paciente</label>
+      <textarea id="a-orient" style="min-height:55px"></textarea></div>
+    <div style="grid-column:span 2;font-size:11px;color:#7b3fa0;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid #e8d8f5;margin-top:6px">Alta</div>
+    <div class="fld"><label>Condições de Alta</label>
+      <select id="a-cond">
+        <option>MELHORADO</option><option>CURADO</option><option>REMOVIDO</option>
+        <option>A PEDIDO POR INDISCIPLINA</option><option>FALECIDO</option>
+      </select>
+    </div>
+    <div class="fld"><label>Encaminhamento</label>
+      <input id="a-encam" type="text" placeholder="Ex: UBS / PSF"/></div>
+    <div class="fld"><label>Retirar pontos em</label>
+      <input id="a-pontos" type="text" placeholder="___/___/______"/></div>
+    <div class="fld"><label>Curativos</label>
+      <input id="a-curativo" type="text" placeholder="Ex: diários"/></div>
+    <div class="fld"><label>Médico</label><input id="a-med" type="text"/></div>
+    <div class="fld"><label>CRM</label><input id="a-crm" type="text"/></div>
+  </div>
+  <div style="padding:10px 16px;display:flex;gap:8px;border-top:1px solid #eee;flex-wrap:wrap">
+    <button onclick="fecharAlta()" style="background:#eee;border:1px solid #ccc;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:bold">← Voltar</button>
+    <button onclick="imprimirAlta()" style="background:#7b3fa0;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:12px;cursor:pointer;font-weight:bold">🖨 Imprimir / PDF</button>
+  </div>
+</div>
+</div>
+
+<div id="receita-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px">
+<div style="background:#fff;border-radius:10px;width:min(740px,98vw);margin:auto;box-shadow:0 8px 40px rgba(0,0,0,.35);overflow:hidden">
+  <div style="background:#0e7c60;color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between">
+    <strong style="font-size:14px">💊 Receita Médica</strong>
+    <button onclick="fecharReceita()" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1">&#10005;</button>
+  </div>
+  <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="font-size:11px;color:#0e7c60;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid #b2dfd4;grid-column:span 2">Dados do Paciente</div>
+      <div class="fld"><label>Nome</label><input id="r-nome" type="text"/></div>
+      <div class="fld"><label>Idade</label><input id="r-idade" type="text"/></div>
+      <div class="fld"><label>Data</label><input id="r-data" type="date"/></div>
+      <div class="fld"><label>Médico</label><input id="r-med" type="text"/></div>
+      <div class="fld"><label>CRM</label><input id="r-crm" type="text"/></div>
+    </div>
+    <div style="font-size:11px;color:#0e7c60;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid #b2dfd4;margin-top:4px">Medicamentos / Uso Oral</div>
+    <div style="display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap;background:#f0faf6;padding:10px;border-radius:6px;border:1px solid #b2dfd4">
+      <div class="fld" style="flex:3;min-width:160px"><label>Medicamento</label>
+        <select id="rm-nome" onchange="autoFillReceita()">
+          <option value="">— selecione ou digite abaixo —</option>
+          <optgroup label="Analgésicos / Antitérmicos">
+            <option data-dose="500mg" data-qt="1 CX" data-inst="TOMAR 1 CP VO DE 6/6H">Dipirona 500mg VO</option>
+            <option data-dose="500mg" data-qt="1 CX" data-inst="TOMAR 1 CP VO DE 6/6H">Paracetamol 500mg VO</option>
+            <option data-dose="50mg" data-qt="1 CX" data-inst="TOMAR 1 CP VO DE 8/8H">Tramadol 50mg VO</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="fld" style="min-width:80px"><label>Qtd/embal.</label><input id="rm-qt" type="text" placeholder="Ex: 1 CX"/></div>
+      <div class="fld" style="flex:2;min-width:160px"><label>Instruções de uso</label><input id="rm-inst" type="text" placeholder="Ex: TOMAR 1 CP VO DE 8/8H POR 7 DIAS"/></div>
+      <button class="btn-add" onclick="addItemReceita()">+ Adicionar</button>
+    </div>
+    <div id="receita-itens" style="display:flex;flex-direction:column;gap:4px;min-height:20px"></div>
+  </div>
+  <div style="padding:10px 16px;display:flex;gap:8px;border-top:1px solid #eee;flex-wrap:wrap">
+    <button onclick="fecharReceita()" style="background:#eee;border:1px solid #ccc;border-radius:6px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:bold">← Voltar</button>
+    <button onclick="imprimirReceita()" style="background:#0e7c60;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:12px;cursor:pointer;font-weight:bold">🖨 Imprimir / PDF</button>
+  </div>
+</div>
+</div>
+
+<div id="form-area">
+<div class="sec">
+  <div class="sec-title">Identificação do Paciente</div>
+  <div class="grid3">
+    <div class="fld" style="grid-column:span 3"><label>Nome completo</label><input id="p-nome" type="text" placeholder="Nome completo do paciente"/></div>
+    <div class="fld"><label>Idade <span style="font-weight:normal;color:#888">(auto)</span></label><input id="p-idade" type="text" placeholder="Preenchido ao informar DN" style="background:#f8fbff"/></div>
+    <div class="fld"><label>Leito</label><input id="p-leito" type="text" placeholder="Ex: 02"/></div>
+    <div class="fld"><label>Registro / CMM</label><input id="p-reg" type="text" placeholder="66679/25"/></div>
+    <div class="fld"><label>Data de admissão</label><input id="p-adm" type="date"/></div>
+    <div class="fld"><label>Data da prescrição</label><input id="p-data" type="date"/></div>
+    <div class="fld"><label>DN (data nascimento)</label><input id="p-dn" type="date" oninput="calcIdade()"/></div>
+    <div class="fld"><label>Diagnóstico / CID</label><input id="p-cid" type="text" placeholder="Ex: K92.0 — Hematêmese"/></div>
+    <div class="fld"><label>Médico responsável</label><input id="p-med" type="text" placeholder="Nome do médico"/></div>
+    <div class="fld"><label>CRM</label><input id="p-crm" type="text" placeholder="1234/AM"/></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Evolução Médica</div>
+  <div class="fld"><textarea id="evolucao" placeholder="Registre a evolução clínica do paciente..."></textarea></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Dieta</div>
+  <div class="add-row">
+    <div class="fld" style="flex:2"><label>Tipo</label>
+      <select id="d-tipo">
+        <option value="">— selecione —</option>
+        <option>Oral livre</option><option>Oral branda</option><option>Oral pastosa</option>
+        <option>Oral hipossódica</option><option>Oral para diabético</option>
+        <option>Oral hipossódica e para diabético</option><option>Oral hipoproteica</option>
+        <option>Liquida restrita</option><option>Zero VO (jejum)</option>
+        <option>Enteral continua via SNE</option><option>Enteral intermitente via SNE</option>
+        <option>Nutricao parenteral total (NPT)</option>
+      </select>
+    </div>
+    <div class="fld" style="flex:2"><label>Observacao / complemento</label><input id="d-obs" type="text" placeholder="Ex: fracionada 6x/dia, sal restrito"/></div>
+    <button class="btn-add" onclick="addDieta()">+ Adicionar</button>
+  </div>
+  <div id="dieta-tags" class="tag-wrap"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Acesso Venoso / Oxigenioterapia</div>
+  <div class="add-row">
+    <div class="fld" style="flex:3"><label>Item</label>
+      <select id="ac-tipo" onchange="checkAcesso('ac-comp-row','ac-comp-label','ac-comp-val')">
+        <option value="">— selecione —</option>
+        <option data-comp="0">Acesso venoso periferico (manter)</option>
+        <option data-comp="0">Acesso venoso central (manter)</option>
+        <option data-comp="0">Acesso venoso periferico — trocar apos 96h</option>
+        <option data-comp="1" data-label="Fluxo (L/min)" data-hint="Ex: 3L/min">Cateter nasal de O2</option>
+        <option data-comp="1" data-label="Fluxo (L/min)" data-hint="Ex: 5L/min">Mascara simples de O2</option>
+        <option data-comp="1" data-label="Concentracao e cor" data-hint="Ex: 35% — Venturi azul">Mascara de Venturi</option>
+        <option data-comp="1" data-label="Parametros" data-hint="Ex: IPAP 12, EPAP 6, FiO2 40%">VNI (BiPAP/CPAP)</option>
+        <option data-comp="0">Oximetria continua</option>
+        <option data-comp="0">Sondagem vesical de demora</option>
+        <option data-comp="0">Sondagem nasoenteral (SNE)</option>
+        <option data-comp="1" data-label="Tipo de dieta" data-hint="Ex: dieta enteral 250mL 4x/dia">Dieta via SNE</option>
+      </select>
+    </div>
+    <button class="btn-add" onclick="addAcesso('ac-tipo','ac-comp-row','ac-comp-val','acesso-tags','acesso')">+ Adicionar</button>
+  </div>
+  <div class="comp-row" id="ac-comp-row">
+    <div class="fld"><label id="ac-comp-label">Complemento</label><input id="ac-comp-val" type="text" placeholder=""/></div>
+  </div>
+  <div id="acesso-tags" class="tag-wrap"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Solucoes Endovenosas</div>
+  <div class="add-row">
+    <div class="fld" style="flex:2"><label>Solucao</label>
+      <select id="sf-sol">
+        <option value="">— selecione —</option>
+        <option>SF 0,9% 500mL EV</option><option>SF 0,9% 250mL EV</option><option>SF 0,9% 100mL EV</option>
+        <option>SG 5% 500mL EV</option><option>SG 5% 250mL EV</option>
+        <option>Ringer Lactato 500mL EV</option><option>Ringer Lactato 250mL EV</option>
+        <option>SF 0,9% 100mL (diluente p/ medicacao)</option>
+        <option>AD 20mL (diluente p/ medicacao)</option>
+        <option>Bicarbonato de sodio 8,4% 100mL EV</option>
+        <option>Albumina 20% 100mL EV</option>
+      </select>
+    </div>
+    <div class="fld"><label>Intervalo</label>
+      <select id="sf-int">
+        <option>1x/dia</option><option>8/8h</option><option>12/12h</option>
+        <option>EV continuo — __mL/h</option><option>S/N</option>
+      </select>
+    </div>
+    <div class="fld" style="flex:1"><label>Adicao / obs</label><input id="sf-obs" type="text" placeholder="Ex: + KCl 19,1% 10mL"/></div>
+    <button class="btn-add" onclick="addSf()">+ Adicionar</button>
+  </div>
+  <div id="sf-tags" class="tag-wrap"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Medicamentos</div>
+  <div class="add-row" style="flex-wrap:wrap">
+    <div class="fld" style="flex:3;min-width:200px"><label>Medicamento</label>
+      <input id="m-busca" type="text" placeholder="Buscar medicamento..." onkeyup="filtrarMedicamentos()" style="margin-bottom:8px; width:100%"/>
+      <select id="m-nome" onchange="autoFill()">
+        <option value="">— selecione —</option>
+        <optgroup label="Analgesicos / Antitermicos">
+          <option data-dose="1g" data-via="EV" data-int="6/6h">Dipirona 500mg/mL — 2mL (1g) EV</option>
+          <option data-dose="500mg" data-via="VO" data-int="6/6h">Dipirona 500mg VO</option>
+          <option data-dose="1g" data-via="EV" data-int="6/6h">Paracetamol 1g EV</option>
+          <option data-dose="500mg" data-via="VO" data-int="6/6h">Paracetamol 500mg VO</option>
+          <option data-dose="30mg" data-via="EV" data-int="8/8h">Cetorolaco 30mg EV</option>
+          <option data-dose="100mg" data-via="EV" data-int="8/8h">Cetoprofeno 100mg EV</option>
+        </optgroup>
+        <optgroup label="Diuréticos">
+          <option data-dose="40mg" data-via="EV" data-int="12/12h">Furosemida 40mg EV</option>
+          <option data-dose="80mg" data-via="EV" data-int="12/12h">Furosemida 80mg EV</option>
+          <option data-dose="40mg" data-via="VO" data-int="1x/dia">Furosemida 40mg VO</option>
+          <option data-dose="25mg" data-via="VO" data-int="1x/dia">Espironolactona 25mg VO</option>
+          <option data-dose="100mg" data-via="VO" data-int="1x/dia">Espironolactona 100mg VO</option>
+          <option data-dose="25mg" data-via="VO" data-int="1x/dia">Hidroclorotiazida 25mg VO</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="fld" style="min-width:72px"><label>Dose</label><input id="m-dose" type="text" placeholder="1g"/></div>
+    <div class="fld" style="min-width:105px"><label>Via</label>
+      <select id="m-via">
+        <option>EV</option><option>VO</option><option>SC</option><option>IM</option>
+        <option>SL</option><option>EV/IM</option><option>nebulizacao</option>
+      </select>
+    </div>
+    <div class="fld" style="min-width:115px"><label>Intervalo</label>
+      <select id="m-int">
+        <option>1x/dia</option><option>2x/dia</option><option>4/4h</option><option>4/4h S/N</option>
+        <option>6/6h</option><option>8/8h</option><option>12/12h</option>
+        <option>S/N</option>
+      </select>
+    </div>
+    <div class="fld" style="min-width:58px"><label>Dia</label><input id="m-dia" type="text" placeholder="D1"/></div>
+    <button class="btn-add" onclick="addMed()">+ Adicionar</button>
+    <button class="btn-add" style="background:#6b4cc4;border-color:#4a2fa0;margin-left:auto" onclick="abrirMedicacaoCustomizada()">✎ Customizar</button>
+  </div>
+  <div id="med-tags" class="tag-wrap"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Cuidados de Enfermagem / Monitorização</div>
+  <div class="add-row">
+    <div class="fld" style="flex:3"><label>Item</label>
+      <select id="mn-tipo" onchange="checkAcesso('mn-comp-row','mn-comp-label','mn-comp-val')">
+        <option value="">— selecione —</option>
+        <optgroup label="Monitorização">
+          <option data-comp="0">Monitorizacao cardiaca continua</option>
+          <option data-comp="1" data-label="Intervalo" data-hint="Ex: 4/4h ou 6/6h">Sinais vitais</option>
+          <option data-comp="0">Balanco hidrico rigoroso</option>
+          <option data-comp="1" data-label="Intervalo" data-hint="Ex: 6/6h ou antes das refeicoes">Glicemia capilar (dextro)</option>
+          <option data-comp="0">Peso diario em jejum</option>
+          <option data-comp="0">Diurese horaria</option>
+          <option data-comp="0">Controle de evacuacoes</option>
+        </optgroup>
+      </select>
+    </div>
+    <button class="btn-add" onclick="addAcesso('mn-tipo','mn-comp-row','mn-comp-val','monitor-tags','monitor')">+ Adicionar</button>
+  </div>
+  <div class="comp-row" id="mn-comp-row">
+    <div class="fld"><label id="mn-comp-label">Complemento</label><input id="mn-comp-val" type="text" placeholder=""/></div>
+  </div>
+  <div id="monitor-tags" class="tag-wrap"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">Sinais Vitais — Relatório de Enfermagem</div>
+  <div class="sv-header">
+    <div>Hora</div><div>PA (mmHg)</div><div>Temp C</div><div>FC bpm</div><div>FR irpm</div><div>SatO2 %</div><div></div>
+  </div>
+  <div id="sv-rows"></div>
+  <button class="btn-add" style="margin-top:8px" onclick="addSvRow('')">+ Horario</button>
+</div>
+</div>
+
+<div id="custom-med-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;align-items:center;justify-content:center">
+<div style="background:#fff;border-radius:10px;width:min(600px,98vw);box-shadow:0 8px 40px rgba(0,0,0,.35);overflow:hidden">
+  <div style="background:#6b4cc4;color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between">
+    <strong style="font-size:14px">✎ Adicionar Medicação Customizada</strong>
+    <button onclick="fecharMedicacaoCustomizada()" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1">&#10005;</button>
+  </div>
+  <div style="padding:20px;display:flex;flex-direction:column;gap:12px">
+    <div style="font-size:12px;color:#666;background:#f5f5f5;padding:10px;border-radius:6px;border-left:3px solid #6b4cc4">
+      Use este formulário para adicionar medicações que não estão no banco de dados.
+    </div>
+    <div class="fld" style="width:100%">
+      <label>Nome da medicação *</label>
+      <input id="cm-nome" type="text" placeholder="Ex: Amitriptilina 75mg VO" style="width:100%"/>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="fld">
+        <label>Dose *</label>
+        <input id="cm-dose" type="text" placeholder="Ex: 75mg"/>
+      </div>
+      <div class="fld">
+        <label>Via *</label>
+        <select id="cm-via" style="width:100%">
+          <option>EV</option><option selected>VO</option><option>SC</option><option>IM</option>
+          <option>SL</option><option>inalação</option><option>tópica</option><option>transdérmico</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="fld">
+        <label>Intervalo *</label>
+        <select id="cm-int" style="width:100%">
+          <option>1x/dia</option><option>2x/dia</option><option>4/4h</option><option selected>8/8h</option>
+          <option>6/6h</option><option>12/12h</option><option>S/N</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label>Dia (opcional)</label>
+        <input id="cm-dia" type="text" placeholder="D1, D2..."/>
+      </div>
+    </div>
+    <div style="padding:12px;background:#fffbf0;border-radius:6px;border-left:3px solid #ff8800;font-size:11px;color:#666">
+      💡 <strong>Dica:</strong> Você pode adicionar observações no nome. Ex: "Domperidona 10mg VO — antes das refeições"
+    </div>
+  </div>
+  <div style="padding:10px 20px;display:flex;gap:8px;border-top:1px solid #eee;flex-wrap:wrap">
+    <button onclick="fecharMedicacaoCustomizada()" style="background:#eee;border:1px solid #ccc;border-radius:6px;padding:8px 18px;font-size:12px;cursor:pointer;font-weight:bold">← Cancelar</button>
+    <button onclick="adicionarMedicacaoCustomizada()" style="background:#6b4cc4;color:#fff;border:none;border-radius:6px;padding:8px 20px;font-size:12px;cursor:pointer;font-weight:bold;margin-left:auto">✓ Adicionar Medicação</button>
+  </div>
+</div>
+</div>
+
+<div id="preview-area">
+  <div class="prev-toolbar">
+    <span>&#128065; Pré-visualização do Prontuário</span>
+    <div class="prev-btns">
+      <button class="pbtn" onclick="togglePreview()">← Voltar e editar</button>
+      <button class="pbtn green" onclick="imprimirDireto()" style="font-size:13px;padding:8px 20px">&#128438; Imprimir / Salvar PDF</button>
+    </div>
+  </div>
+  <div class="a4-wrap"><div class="a4" id="a4-doc"></div></div>
+  <div style="text-align:center;margin-top:12px">
+    <button onclick="imprimirDireto()" style="padding:10px 32px;font-size:14px;font-weight:bold;background:#1a4a7a;color:#fff;border:none;border-radius:8px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">
+      &#128438; Clique aqui para Imprimir / Salvar como PDF
+    </button>
+    <p style="font-size:11px;color:#777;margin-top:8px">Na janela que abrir → escolha <strong>Salvar como PDF</strong> como destino para gerar o PDF</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+const DB={dieta:[],acesso:[],sf:[],med:[],monitor:[]};
+let pacienteAtualId=null;
+document.getElementById('p-data').value=new Date().toISOString().split('T')[0];
+function v(id){return(document.getElementById(id)||{}).value||''}
+function fmtD(s){if(!s)return'';const[y,m,d]=s.split('-');return d+'/'+m+'/'+y}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function calcIdade(){const dn=document.getElementById('p-dn').value;if(!dn)return;const nasc=new Date(dn);const hoje=new Date();let anos=hoje.getFullYear()-nasc.getFullYear();const m=hoje.getMonth()-nasc.getMonth();if(m<0||(m===0&&hoje.getDate()<nasc.getDate()))anos--;if(anos>=0)document.getElementById('p-idade').value=anos+' anos';}
+function mkTag(text,cls,wrapId,key){const idx=DB[key].length;DB[key].push(text);const wrap=document.getElementById(wrapId);const cont=document.createElement('div');cont.className='tag-container';const tag=document.createElement('div');tag.className='tag '+cls;const sp=document.createElement('span');sp.className='tag-text';sp.title='Clique para editar';sp.textContent=text;sp.onclick=()=>startEdit(cont,idx,key);const be=document.createElement('span');be.className='tag-edit-btn';be.title='Editar';be.innerHTML='&#9998;';be.onclick=()=>startEdit(cont,idx,key);const br=document.createElement('span');br.className='tag-rm-btn';br.title='Remover';br.innerHTML='&#10005;';br.onclick=()=>{DB[key][idx]=null;cont.remove()};tag.appendChild(sp);tag.appendChild(be);tag.appendChild(br);const er=document.createElement('div');er.className='edit-row';er.innerHTML='<input type="text"/><button class="eok" onclick="saveEdit(this)">OK</button><button class="ecx" onclick="this.parentElement.classList.remove(\'show\')">X</button>';er.dataset.idx=idx;er.dataset.key=key;cont.appendChild(tag);cont.appendChild(er);wrap.appendChild(cont);}
+function startEdit(cont,idx,key){const er=cont.querySelector('.edit-row');er.querySelector('input').value=DB[key][idx]||'';er.classList.add('show');er.querySelector('input').focus();}
+function saveEdit(btn){const er=btn.parentElement;const cont=er.parentElement;const val=er.querySelector('input').value.trim();const idx=er.dataset.idx;const key=er.dataset.key;if(val){DB[key][idx]=val;cont.querySelector('.tag-text').textContent=val;}er.classList.remove('show');}
+function checkAcesso(rowId,labelId,valId){const selId=rowId==='ac-comp-row'?'ac-tipo':'mn-tipo';const sel=document.getElementById(selId);const opt=sel.options[sel.selectedIndex];const row=document.getElementById(rowId);if(opt&&opt.dataset.comp==='1'){row.classList.add('show');document.getElementById(labelId).textContent=opt.dataset.label||'Complemento';const inp=document.getElementById(valId);inp.placeholder=opt.dataset.hint||'';inp.value='';inp.focus();}else{row.classList.remove('show');document.getElementById(valId).value='';}}
+function addDieta(){const t=v('d-tipo'),o=v('d-obs');if(!t)return;mkTag('DIETA '+t.toUpperCase()+(o?' — '+o.toUpperCase():''),'tag-d','dieta-tags','dieta');document.getElementById('d-obs').value='';document.getElementById('d-tipo').value='';}
+function addAcesso(selId,rowId,valId,wrapId,key){const sel=document.getElementById(selId);const opt=sel.options[sel.selectedIndex];if(!opt||!opt.value)return;const comp=v(valId).trim();mkTag(opt.text.toUpperCase()+(comp?' — '+comp.toUpperCase():''),'tag-a',wrapId,key);sel.value='';document.getElementById(rowId).classList.remove('show');document.getElementById(valId).value='';}
+function addSf(){const s=v('sf-sol'),i=v('sf-int'),o=v('sf-obs');if(!s)return;mkTag((s+' '+i+(o?' — '+o:'')).toUpperCase(),'tag-s','sf-tags','sf');document.getElementById('sf-obs').value='';document.getElementById('sf-sol').value='';}
+function autoFill(){const sel=document.getElementById('m-nome');const opt=sel.options[sel.selectedIndex];if(opt.dataset.dose)document.getElementById('m-dose').value=opt.dataset.dose;if(opt.dataset.via)document.getElementById('m-via').value=opt.dataset.via;if(opt.dataset.int)document.getElementById('m-int').value=opt.dataset.int;}
+function addMed(){const sel=document.getElementById('m-nome');const nome=sel.options[sel.selectedIndex]&&sel.options[sel.selectedIndex].text;if(!nome||nome.includes('selecione'))return;const dose=v('m-dose'),via=v('m-via'),intv=v('m-int'),dia=v('m-dia');mkTag((nome+(dose?' — '+dose:'')+(via?' '+via:'')+(intv?' '+intv:'')+(dia?' ('+dia+')':'')).toUpperCase(),'tag-m','med-tags','med');document.getElementById('m-dose').value='';document.getElementById('m-dia').value='';sel.value='';}
+function addSvRow(h){const row=document.createElement('div');row.className='sv-row';row.innerHTML='<input type="text" value="'+(h||'')+'" placeholder="Hora"/>'+
+    '<input type="text" placeholder="PA"/><input type="text" placeholder="Temp"/>'+
+    '<input type="text" placeholder="FC"/><input type="text" placeholder="FR"/>'+
+    '<input type="text" placeholder="SatO2"/>'+
+    '<span class="sv-rm" onclick="this.parentElement.remove()">X</span>';document.getElementById('sv-rows').appendChild(row);}
+['08:00','12:00','16:00','20:00','00:00','04:00'].forEach(h=>addSvRow(h));
+function getSv(){return Array.from(document.querySelectorAll('#sv-rows .sv-row')).map(r=>{const inp=r.querySelectorAll('input');return inp.length>=6?{h:inp[0].value,pa:inp[1].value,tmp:inp[2].value,fc:inp[3].value,fr:inp[4].value,sat:inp[5].value}:null;}).filter(Boolean);}
+function buildA4(){const nome=v('p-nome')||'_________________________________';const idade=v('p-idade')||'___';const leito=v('p-leito')||'__';const reg=v('p-reg')||'_____';const adm=fmtD(v('p-adm'))||'___/___/______';const dataRx=fmtD(v('p-data'))||'___/___/______';const cid=v('p-cid');const medico=v('p-med')||'_______________________________';const crm=v('p-crm')||'___________';const evol=esc(v('evolucao')||'').replace(/\n/g,'<br>');const dn=v('p-dn')||'___/___/______';const all=[...DB.dieta,...DB.acesso,...DB.sf,...DB.med,...DB.monitor].filter(Boolean);const sv=getSv();const rxRows=all.length?all.map((it,i)=>`<tr><td class="rn">${i+1}.</td><td>${esc(it)}</td><td class="rh">&nbsp;</td></tr>`).join(''):`<tr><td class="rn"></td><td style="color:#bbb;font-size:9px;padding:8px">Nenhum item prescrito</td><td class="rh"></td></tr>`;const svHoras=sv.map(r=>`<td class="sv-hora">${r.h||'&nbsp;'}</td>`).join('');const svPA=sv.map(r=>`<td>${r.pa||'&nbsp;'}</td>`).join('');const svTemp=sv.map(r=>`<td>${r.tmp||'&nbsp;'}</td>`).join('');const svFC=sv.map(r=>`<td>${r.fc||'&nbsp;'}</td>`).join('');const svFR=sv.map(r=>`<td>${r.fr||'&nbsp;'}</td>`).join('');const svSat=sv.map(r=>`<td>${r.sat||'&nbsp;'}</td>`).join('');const svHoraTh=sv.map(r=>`<th>${r.h||'&nbsp;'}</th>`).join('');return `<table class="a4-cab"><tbody><tr><td class="col-inst"><strong>INTERNAÇÃO CMM</strong><span>ESTADO DO AMAZONAS</span><span>PREFEITURA MUNICIPAL DE PARINTINS</span><span>SECRETARIA MUNICIPAL DE SAÚDE</span></td><td class="col-pac"><span class="pac-nome">NOME: ${esc(nome.toUpperCase())}</span><b>IDADE:</b> ${esc(idade)} &nbsp;&nbsp; <b>DN:</b> ${esc(dn)}<br><b>DATA ADMISSÃO:</b> ${adm} &nbsp;&nbsp; <b>DATA PRESCRIÇÃO:</b> ${dataRx}${cid?`<br><b>DIAGNÓSTICO:</b> ${esc(cid)}`:''}</td><td class="col-reg"><div>CMM</div><div>REG: ${esc(reg)}</div><div>LEITO: ${esc(leito)}</div></td></tr></tbody></table><table class="a4-body"><tbody><tr><td class="col-evol" style="padding:0"><div class="sec-bar">EVOLUÇÃO MÉDICA</div></td><td class="col-rx" style="padding:0"><div class="sec-bar">PRESCRIÇÃO MÉDICA</div></td><td class="col-hor" style="padding:0"><div class="sec-bar">HORÁRIO</div></td></tr><tr><td class="col-evol" style="vertical-align:top"><div class="evol-text">${evol||'&nbsp;'}</div><div class="dextro-row" style="border-top:1px solid #aaa;padding:4px 8px;font-size:10px;font-weight:bold">DEXTRO: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td><td class="col-rx" style="vertical-align:top;padding:0"><table class="rx-list"><tbody>${rxRows}</tbody></table></td><td class="col-hor" style="vertical-align:top">&nbsp;</td></tr></tbody></table><div class="sv-wrap"><div class="sv-titulo">RELATÓRIO DE ENFERMAGEM — SINAIS VITAIS</div><table class="sv-tbl2"><thead><tr><th style="width:56px;text-align:left;padding-left:6px">Parâmetro</th>${svHoraTh}</tr></thead><tbody><tr><td style="font-weight:bold;font-size:9px;background:#f5f5f5;padding-left:6px">PA (mmHg)</td>${svPA}</tr><tr><td style="font-weight:bold;font-size:9px;background:#f5f5f5;padding-left:6px">Temp (°C)</td>${svTemp}</tr><tr><td style="font-weight:bold;font-size:9px;background:#f5f5f5;padding-left:6px">FC (bpm)</td>${svFC}</tr><tr><td style="font-weight:bold;font-size:9px;background:#f5f5f5;padding-left:6px">FR (irpm)</td>${svFR}</tr><tr><td style="font-weight:bold;font-size:9px;background:#f5f5f5;padding-left:6px">SatO² (%)</td>${svSat}</tr></tbody></table></div><div class="a4-ass"><div class="a4-assline">${esc(medico)}<br>CRM: ${esc(crm)}</div></div>`;}
+function togglePreview(){const form=document.getElementById('form-area');const prev=document.getElementById('preview-area');const btn=document.getElementById('btn-prev');if(prev.classList.contains('visible')){prev.classList.remove('visible');form.style.display='';btn.textContent='Pré-visualizar';}else{document.getElementById('a4-doc').innerHTML=buildA4();form.style.display='none';prev.classList.add('visible');btn.textContent='Voltar';window.scrollTo(0,0);}}
+function toast(msg,cor){const t=document.getElementById('toast');t.textContent=msg;t.style.background=cor||'#1a4a7a';t.style.display='block';setTimeout(()=>{t.style.display='none'},2800);}
+async function salvarPaciente(){const nome=v('p-nome');if(!nome){toast('Preencha o nome do paciente primeiro','#b94a00');return;}const dadosPac={id:pacienteAtualId,nome:v('p-nome'),leito:v('p-leito'),registro:v('p-reg'),dn:v('p-dn'),idade:v('p-idade'),admissao:v('p-adm'),cid:v('p-cid'),medico:v('p-med'),crm:v('p-crm')};const resPac=await window.api.pacientes.salvar(dadosPac);pacienteAtualId=resPac.id;const prescricao={paciente_id:pacienteAtualId,data_rx:v('p-data'),evolucao:v('evolucao'),itens_json:JSON.stringify({dieta:DB.dieta.filter(Boolean),acesso:DB.acesso.filter(Boolean),sf:DB.sf.filter(Boolean),med:DB.med.filter(Boolean),monitor:DB.monitor.filter(Boolean)}),sv_json:JSON.stringify(getSv())};await window.api.prescricoes.salvar(prescricao);toast('✓ '+nome+' (Leito '+v('p-leito')+') salvo!','#256b14');}
+async function renderPainel(){const busca=(v('painel-busca')||'').toLowerCase();let lista;if(busca){lista=await window.api.pacientes.buscar(busca);}else{lista=await window.api.pacientes.listar();}const el=document.getElementById('painel-lista');if(!lista||lista.length===0){el.innerHTML='<p style="text-align:center;color:#aaa;font-size:12px;padding:20px">Nenhum paciente salvo ainda.<br>Preencha e clique em "Salvar".</p>';return;}el.innerHTML=lista.map(s=>{const resumo=(s.total_prescricoes||0)+' prescrição(ões)';const ultima=s.ultima_prescricao?' · Última: '+s.ultima_prescricao:'';return `<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #d6dce8;border-radius:8px;background:#f8faff"><div style="flex:1;min-width:0"><div style="font-weight:bold;font-size:13px;color:#1a2c4a">${s.nome||'—'}</div><div style="font-size:11px;color:#666">Leito ${s.leito||'?'} · ${resumo}${ultima}</div><div style="font-size:10px;color:#999">${s.cid||''}</div></div><button data-id="${s.id}" onclick="carregarPaciente(+this.dataset.id)" style="background:#1a4a7a;color:#fff;border:none;border-radius:5px;padding:6px 12px;font-size:11px;cursor:pointer;font-weight:bold">&#128196; Carregar</button><button data-id="${s.id}" data-nome="${(s.nome||'').replace(/"/g,'&quot;')}" onclick="excluirPaciente(+this.dataset.id, this.dataset.nome)" style="background:#fef2f2;color:#c00;border:1px solid #fcc;border-radius:5px;padding:6px 10px;font-size:11px;cursor:pointer">&#128465;</button></div>`;}).join('');}
+async function carregarPaciente(id){const lista=await window.api.pacientes.listar();const pac=lista.find(p=>p.id===id);if(!pac)return;const rx=await window.api.prescricoes.carregar(id,null);['dieta','acesso','sf','med','monitor'].forEach(key=>{DB[key]=[];});['dieta-tags','acesso-tags','sf-tags','med-tags','monitor-tags'].forEach(id2=>{document.getElementById(id2).innerHTML='';});document.getElementById('p-nome').value=pac.nome||'';document.getElementById('p-idade').value=pac.idade||'';document.getElementById('p-leito').value=pac.leito||'';document.getElementById('p-reg').value=pac.registro||'';document.getElementById('p-adm').value=pac.admissao||'';document.getElementById('p-data').value=new Date().toISOString().split('T')[0];document.getElementById('p-cid').value=pac.cid||'';document.getElementById('p-dn').value=pac.dn||'';document.getElementById('p-med').value=pac.medico||'';document.getElementById('p-crm').value=pac.crm||'';if(rx){document.getElementById('evolucao').value=rx.evolucao||'';try{const itens=JSON.parse(rx.itens_json||'{}');const mapa={dieta:'dieta-tags',acesso:'acesso-tags',sf:'sf-tags',med:'med-tags',monitor:'monitor-tags'};const cls={dieta:'tag-d',acesso:'tag-a',sf:'tag-s',med:'tag-m',monitor:'tag-a'};Object.keys(mapa).forEach(key=>{(itens[key]||[]).forEach(item=>{if(item)mkTag(item,cls[key],mapa[key],key);});});}catch(e){console.error('Erro ao restaurar itens:',e);}}pacienteAtualId=id;fecharPainel();toast('✓ Prescrição de '+pac.nome+' carregada');}
+async function excluirPaciente(id,nome){if(!confirm('Excluir '+nome+' permanentemente?'))return;await window.api.pacientes.excluir(id);renderPainel();toast('Paciente removido','#8b0000');}
+async function imprimirDireto(){const corpo=buildA4();const html='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Prescricao</title><style>*{box-sizing:border-box;margin:0;padding:0}@page{size:A4;margin:10mm 12mm}body{font-family:Arial,sans-serif;font-size:10.5px;color:#000;background:#fff}.a4{width:100%;max-width:760px;margin:0 auto}.a4-cab{width:100%;border-collapse:collapse;border:1.5px solid #000}.a4-cab td{border:1px solid #555;padding:6px 10px;vertical-align:top}.a4-cab .col-inst{width:34%;font-size:9px;line-height:1.7;text-align:center}.a4-cab .col-inst strong{font-size:10.5px;display:block;margin-bottom:2px;text-transform:uppercase}.a4-cab .col-inst span{display:block;font-size:8.5px}.a4-cab .col-pac{width:50%;font-size:10px;line-height:1.9}.a4-cab .col-pac .pac-nome{font-size:11.5px;font-weight:bold;text-transform:uppercase;display:block;margin-bottom:2px}.a4-cab .col-pac b{font-weight:bold}.a4-cab .col-reg{width:16%;text-align:center;font-size:10px;font-weight:bold;line-height:2.2;vertical-align:middle}.a4-body{width:100%;border-collapse:collapse;border:1.5px solid #000;border-top:none}.a4-body>tbody>tr>td{border:1px solid #555;vertical-align:top;padding:0}.col-evol{width:32%}.col-rx{width:52%}.col-hor{width:16%;text-align:center}.sec-bar{background:#000;color:#fff;font-size:9px;font-weight:bold;padding:2px 8px;letter-spacing:.08em;text-align:center}.evol-text{padding:7px 8px;font-size:10px;line-height:1.6;min-height:220px;white-space:pre-wrap}.rx-list{padding:0;margin:0;width:100%;border-collapse:collapse}.rx-list tr td{padding:3px 7px;border-bottom:.5px solid #ddd;font-size:10px;vertical-align:top;line-height:1.5}.rx-list tr td.rn{color:#777;width:18px;font-size:9px;text-align:right;padding-right:4px}.rx-list tr td.rh{width:70px;border-left:.5px solid #ddd;text-align:center;font-size:9px;color:#999}.sv-wrap{border:1.5px solid #000;border-top:none}.sv-titulo{background:#000;color:#fff;font-size:9px;font-weight:bold;padding:2px 8px;letter-spacing:.08em}.sv-tbl2{width:100%;border-collapse:collapse}.sv-tbl2 th{background:#e8e8e8;font-size:9px;font-weight:bold;padding:3px 4px;border:1px solid #aaa;text-align:center}.sv-tbl2 td{font-size:10px;padding:4px;border:1px solid #ccc;text-align:center;min-width:28px}.a4-ass{margin-top:16px;text-align:right;font-size:10px}.a4-assline{display:inline-block;border-top:1px solid #333;padding-top:3px;min-width:200px;text-align:center}</style></head><body><div class="a4">'+corpo+'</div></body></html>';const nome=(v('p-nome')||'paciente').replace(/\s+/g,'_');if(window.api){const result=await window.api.imprimir.pdf(html,'prescricao_'+nome+'.pdf');if(result&&result.salvo)toast('✓ PDF salvo!','#256b14');}else{const blob=new Blob([html],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='prescricao_'+nome+'.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},2000);}}
+async function fazerBackup(){if(!window.api){alert('Backup disponível apenas no app instalado.');return;}const result=await window.api.db.backup();if(result&&result.salvo)toast('✓ Backup salvo em: '+result.caminho,'#256b14');}
+function abrirPainel(){renderPainel();const p=document.getElementById('painel-overlay');p.style.display='flex';document.getElementById('painel-busca').value='';renderPainel();}
+function fecharPainel(){document.getElementById('painel-overlay').style.display='none';}
+document.getElementById('painel-overlay').addEventListener('click',function(e){if(e.target===this)fecharPainel();});
+function avancarDia(){if(!confirm('Avançar para o próximo dia?\n\n• A data da prescrição será atualizada para hoje\n• Todos os itens com (D1), (D2)... serão incrementados automaticamente\n• A evolução médica será limpa para o novo registro\n\nContinuar?'))return;document.getElementById('p-data').value=new Date().toISOString().split('T')[0];const re=/\(D(\d+)\)/gi;['dieta','acesso','sf','med','monitor'].forEach(key=>{DB[key]=DB[key].map(item=>{if(!item)return null;return item.replace(re,(m,n)=>'(D'+(parseInt(n)+1)+')');});});document.querySelectorAll('.tag-text').forEach(el=>{el.textContent=el.textContent.replace(/\(D(\d+)\)/gi,(m,n)=>'(D'+(parseInt(n)+1)+')');});document.getElementById('evolucao').value='';toast('✓ Dia avançado! Verifique os itens e redija a nova evolução.','#256b14');}
+function novaPrescricao(){if(!confirm('Iniciar nova prescrição?\n\nTodo o conteúdo atual será apagado.\n(Salve antes se necessário)'))return;['p-nome','p-idade','p-leito','p-reg','p-adm','p-cid','p-dn','p-med','p-crm','evolucao'].forEach(id=>{document.getElementById(id).value='';});document.getElementById('p-data').value=new Date().toISOString().split('T')[0];['dieta','acesso','sf','med','monitor'].forEach(key=>{DB[key]=[];});['dieta-tags','acesso-tags','sf-tags','med-tags','monitor-tags'].forEach(id=>{document.getElementById(id).innerHTML='';});toast('Formulário limpo — nova prescrição');}
+function calcDias(){const adm=document.getElementById('a-adm').value;const saida=document.getElementById('a-saida').value;if(!adm||!saida)return;let admD;if(adm.includes('/')){const p=adm.split('/');admD=new Date(p[2],p[1]-1,p[0]);}else admD=new Date(adm);const saidaD=new Date(saida);const diff=Math.round((saidaD-admD)/(1000*60*60*24));if(!isNaN(diff)&&diff>=0)document.getElementById('a-dias').value=diff+' DIA'+(diff!==1?'S':'');}
+function abrirAlta(){const dn=v('p-dn');let dnStr='';if(dn){const p=dn.split('-');dnStr=p[2]+'/'+p[1]+'/'+p[0];}const adm=fmtD(v('p-adm'));let idadeStr=v('p-idade')||'';if(dn){const nascimento=new Date(dn);const hoje=new Date();let anos=hoje.getFullYear()-nascimento.getFullYear();const m=hoje.getMonth()-nascimento.getMonth();if(m<0||(m===0&&hoje.getDate()<nascimento.getDate()))anos--;if(anos>=0)idadeStr=anos+' ANOS';}document.getElementById('a-nome').value=v('p-nome').toUpperCase();document.getElementById('a-reg').value=v('p-reg');document.getElementById('a-dn').value=(dnStr?(dnStr+' — '):'') + idadeStr;document.getElementById('a-adm').value=adm;document.getElementById('a-saida').value=v('p-data');document.getElementById('a-diag').value=v('p-cid').toUpperCase();document.getElementById('a-med').value=v('p-med').toUpperCase();document.getElementById('a-crm').value=v('p-crm');document.getElementById('a-hist').value=v('evolucao').toUpperCase();document.getElementById('a-orient').value='';document.getElementById('a-evol').value='MELHORADO';document.getElementById('a-encam').value='UBS / PSF';document.getElementById('a-pontos').value='';document.getElementById('a-curativo').value='';calcDias();document.getElementById('alta-overlay').style.display='flex';}
+function fecharAlta(){document.getElementById('alta-overlay').style.display='none';}
+document.getElementById('alta-overlay').addEventListener('click',function(e){if(e.target===this)fecharAlta();});
+function imprimirAlta(){const nome=document.getElementById('a-nome').value||'___________________________';const reg=document.getElementById('a-reg').value||'_______';const sexo=document.getElementById('a-sexo').value;const dn=document.getElementById('a-dn').value||'___/___/______ — ___ ANOS';const adm=document.getElementById('a-adm').value||'___/___/______';const saida=document.getElementById('a-saida').value?fmtD(document.getElementById('a-saida').value):'___/___/______';const dias=document.getElementById('a-dias').value||'___';const hist=document.getElementById('a-hist').value||'';const diag=document.getElementById('a-diag').value||'';const trat=document.getElementById('a-trat').value;const evol=document.getElementById('a-evol').value||'';const orient=document.getElementById('a-orient').value||'';const cond=document.getElementById('a-cond').value;const encam=document.getElementById('a-encam').value||'';const pontos=document.getElementById('a-pontos').value||'___/___/______';const curativo=document.getElementById('a-curativo').value||'';const medico=document.getElementById('a-med').value||'______________________________';const crm=document.getElementById('a-crm').value||'___________';const html=`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Resumo de Alta — ${nome}</title><style>*{box-sizing:border-box;margin:0;padding:0}@page{size:A4;margin:12mm 14mm}body{font-family:Arial,sans-serif;font-size:11px;color:#000;background:#fff}.doc{width:100%;max-width:760px;margin:0 auto}.instituicao{text-align:center;margin-bottom:6px;font-size:10.5px;line-height:1.7}.instituicao b{font-size:13px;display:block}.titulo-box{border:2px solid #000;text-align:center;padding:4px;font-weight:bold;font-size:13px;letter-spacing:.08em;margin-bottom:0}table.main{width:100%;border-collapse:collapse;border:1.5px solid #000}table.main td,table.main th{border:1px solid #555;padding:5px 8px;vertical-align:top;font-size:11px}.lbl{font-weight:bold}.field-row{line-height:1.9}.evol-box{min-height:24px}.alta-footer{display:flex;gap:0;border-top:1px solid #555}.alta-footer .left{flex:1;padding:5px 8px;border-right:1px solid #555}.alta-footer .right{width:220px;padding:5px 8px;font-size:10px;line-height:1.7}.ass{margin-top:18px;text-align:right;font-size:10.5px}.assline{display:inline-block;border-top:1px solid #333;padding-top:3px;min-width:200px;text-align:center}@media print{body{background:#fff}}</style></head><body><div class="doc"><div class="instituicao">SUSAM — SECRETARIA DE ESTADO DA SAÚDE<br><b>HOSPITAL REGIONAL DR. JOFRE DE MATOS COHEN</b>PARINTINS — AMAZONAS</div><div class="titulo-box">RESUMO DE ALTA</div><table class="main"><tbody><tr><td colspan="4" class="field-row"><span class="lbl">NOME:</span> ${nome} &nbsp;&nbsp;<span class="lbl">REGISTRO:</span> ${reg} &nbsp;&nbsp;<span class="lbl">SEXO:</span> ${sexo} &nbsp;&nbsp;<span class="lbl">DATA DE NASCIMENTO / IDADE:</span> ${dn}<br><span class="lbl">DATA DA INTERNAÇÃO:</span> ${adm} &nbsp;&nbsp;&nbsp;<span class="lbl">DATA DE SAÍDA:</span> ${saida}</td></tr><tr><td colspan="4"><span class="lbl">HISTÓRICO CLÍNICO:</span> ${hist.replace(/\n/g,'<br>')}</td></tr><tr><td colspan="4"><span class="lbl">DIAGNÓSTICO:</span> ${diag}</td></tr><tr><td colspan="2"><span class="lbl">TRATAMENTO:</span> ${trat}</td><td colspan="2"><span class="lbl">EVOLUÇÃO E COMPLICAÇÕES:</span> ${evol}</td></tr><tr><td colspan="3" style="vertical-align:top"><span class="lbl">ORIENTAÇÕES AO PACIENTE:</span><br>${orient.replace(/\n/g,'<br>')}${curativo?'<br><span class="lbl">CURATIVOS:</span> '+curativo:''} ${pontos!=='___/___/______'?'<br><span class="lbl">RETIRAR PONTOS:</span> '+pontos:'<br><span class="lbl">RETIRAR PONTOS:</span> ___/___/______'}</td><td style="vertical-align:top;font-size:10px;line-height:1.9">&nbsp;</td></tr><tr><td colspan="4"><div class="alta-footer"><div class="left"><span class="lbl">ALTA: DATA:</span> ${saida}&nbsp;&nbsp;<span class="lbl">CONDIÇÕES:</span> ${cond}&nbsp;&nbsp;<span class="lbl">PARA:</span> ${encam}<br><br><span class="lbl">MÉDICO:</span> ${medico} &nbsp;&nbsp; <span class="lbl">CRM:</span> ${crm}<br><br><span style="font-size:9.5px">______________________________ &nbsp;&nbsp; RECEBI 2ª VIA</span></div><div class="right"><span class="lbl">DIAS DE HOSPITALIZAÇÃO:</span><br><br><span style="font-size:16px;font-weight:bold">${dias}</span></div></div></td></tr></tbody></table></div></body></html>`;const w=window.open('','_blank','width=860,height=700');if(w){w.document.open();w.document.write(html);w.document.close();w.onload=function(){w.focus();w.print();};setTimeout(()=>{try{w.focus();w.print();}catch(e){}},800);}else{alert('Erro ao abrir janela.');}}
+const RECEITA_ITENS=[];
+function abrirReceita(){document.getElementById('r-nome').value=v('p-nome').toUpperCase();document.getElementById('r-idade').value=v('p-idade').toUpperCase();document.getElementById('r-data').value=v('p-data')||new Date().toISOString().split('T')[0];document.getElementById('r-med').value=v('p-med').toUpperCase();document.getElementById('r-crm').value=v('p-crm');RECEITA_ITENS.length=0;renderItensReceita();document.getElementById('receita-overlay').style.display='flex';}
+function fecharReceita(){document.getElementById('receita-overlay').style.display='none';}
+document.getElementById('receita-overlay').addEventListener('click',function(e){if(e.target===this)fecharReceita();});
+function autoFillReceita(){const sel=document.getElementById('rm-nome');const opt=sel.options[sel.selectedIndex];if(opt.dataset.qt)document.getElementById('rm-qt').value=opt.dataset.qt;if(opt.dataset.inst)document.getElementById('rm-inst').value=opt.dataset.inst;}
+function addItemReceita(){const sel=document.getElementById('rm-nome');const nome=sel.options[sel.selectedIndex].text;const qt=document.getElementById('rm-qt').value.trim();const inst=document.getElementById('rm-inst').value.trim();if(!nome||nome.includes('selecione'))return;RECEITA_ITENS.push({nome:nome.toUpperCase(),qt:qt.toUpperCase(),inst:inst.toUpperCase()});renderItensReceita();sel.value='';document.getElementById('rm-qt').value='';document.getElementById('rm-inst').value='';}
+function renderItensReceita(){const wrap=document.getElementById('receita-itens');if(RECEITA_ITENS.length===0){wrap.innerHTML='<p style="font-size:11px;color:#aaa;padding:4px">Nenhum item adicionado.</p>';return;}wrap.innerHTML=RECEITA_ITENS.map((it,i)=>`<div style="display:flex;align-items:flex-start;gap:8px;padding:7px 10px;background:#f8fff9;border:1px solid #b2dfd4;border-radius:6px;font-size:12px"><div style="flex:1"><div style="font-weight:bold">- ${it.nome} ${it.qt?'— '+it.qt:''}</div><div style="color:#444;font-size:11px">${it.inst}</div></div><span onclick="RECEITA_ITENS.splice(${i},1);renderItensReceita()" style="cursor:pointer;color:#c00;font-size:16px;line-height:1;opacity:.7" title="Remover">&#10005;</span></div>`).join('');}
+function imprimirReceita(){const itens=RECEITA_ITENS;if(itens.length===0){alert('Adicione pelo menos um medicamento.');return;}const html=buildReceitaHTML(itens,document.getElementById('r-nome').value||'___________________________',document.getElementById('r-idade').value||'___',document.getElementById('r-data').value,document.getElementById('r-med').value||'______________________________',document.getElementById('r-crm').value||'___________');window.open('','_blank').document.write(html);window.open('','_blank').document.close();}
+function buildReceitaHTML(itens,nome,idade,data,medico,crm){const dataFmt=data?fmtD(data):fmtD(new Date().toISOString().split('T')[0]);const itensHtml=itens.map(it=>`<p style="margin:0 0 2px;font-weight:bold;font-size:11.5px">- ${it.nome}${it.qt?' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+it.qt:''}</p><p style="margin:0 0 12px;font-size:11px">${it.inst}</p>`).join('');return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Receita — ${nome}</title><style>*{box-sizing:border-box;margin:0;padding:0}@page{size:A4;margin:14mm 16mm}body{font-family:Arial,sans-serif;font-size:11px;color:#000;background:#fff}.receita{width:100%;max-width:360px;margin:0 auto;border:none}.inst{text-align:center;font-size:9.5px;line-height:1.8;margin-bottom:4px}.inst b{font-size:12px;display:block}.titulo{font-size:14px;font-weight:bold;text-align:center;letter-spacing:.1em;border-top:1.5px solid #000;border-bottom:1.5px solid #000;padding:4px 0;margin-bottom:10px}.paciente{font-size:11.5px;font-weight:bold;margin-bottom:12px}.uso{font-weight:bold;font-size:11px;text-decoration:underline;margin-bottom:8px}.assdiv{margin-top:24px;border-top:1px solid #333;padding-top:4px;text-align:center;font-size:10.5px}@media print{body{background:#fff}}</style></head><body><div class="receita"><div class="inst">SUSAM<br>Secretaria de Estado da Saúde<br><b>HOSPITAL REGIONAL JOFRE DE MATOS COHEN</b>Parintins-AM</div><div class="titulo">RECEITUÁRIO</div><p class="paciente">Paciente: ${nome}</p><p style="font-size:11px;margin-bottom:10px">Idade: ${idade}</p><p class="uso">USO ORAL</p>${itensHtml}<p style="margin-top:16px;font-size:11px">DATA: ${dataFmt}</p><div class="assdiv">${medico}<br>MÉDICO CRM ${crm}</div></div><div style="text-align:center;margin-top:16px"><button onclick="window.print()" style="padding:8px 24px;background:#0e7c60;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:bold">🖨 Imprimir / Salvar PDF</button></div></body></html>`;}
+let medicamentosDb={medicamentos:[]};let todosOsMedicamentos=[];async function carregarMedicamentos(){if(!window.api){mostrarDropdownPadrao();return;}try{let resposta=null;for(let caminho of ['./medicamentos.json','../medicamentos.json','../../medicamentos.json']){try{resposta=await fetch(caminho);if(resposta.ok)break;}catch(e){}}const response=resposta;const data=await response.json();medicamentosDb=data;todosOsMedicamentos=[];medicamentosDb.medicamentos.forEach(cat=>{cat.itens.forEach(med=>{todosOsMedicamentos.push({...med,categoria:cat.categoria});});});preencherSelectMedicamentos(todosOsMedicamentos);}catch(e){console.log('Banco JSON não encontrado, usando dropdown padrão');mostrarDropdownPadrao();}}function preencherSelectMedicamentos(meds){const sel=document.getElementById('m-nome');const optionsAtuais=sel.innerHTML;sel.innerHTML=optionsAtuais;meds.forEach(med=>{const opt=document.createElement('option');opt.value=med.nome;opt.text=med.nome;opt.dataset.dose=med.dose;opt.dataset.via=med.via;opt.dataset.int=med.intervalo;sel.appendChild(opt);});}function filtrarMedicamentos(){const busca=document.getElementById('m-busca').value.toLowerCase();if(!busca){preencherSelectMedicamentos(todosOsMedicamentos);return;}const filtrados=todosOsMedicamentos.filter(m=>m.nome.toLowerCase().includes(busca)||m.categoria.toLowerCase().includes(busca));preencherSelectMedicamentos(filtrados);}function mostrarDropdownPadrao(){console.log('Usando medicamentos padrão');}document.addEventListener('DOMContentLoaded',carregarMedicamentos);async function importarWord(){if(!window.api){alert('Importar/Exportar Word disponível apenas no app instalado.');return;}const result=await window.api.word.importar();if(result.cancelado)return;if(result.erro){alert('Erro ao ler arquivo: '+result.mensagem);return;}const texto=result.texto;const dados=parsePrescrição(texto);if(dados.nome)document.getElementById('p-nome').value=dados.nome;if(dados.leito)document.getElementById('p-leito').value=dados.leito;if(dados.idade)document.getElementById('p-idade').value=dados.idade;if(dados.cid)document.getElementById('p-cid').value=dados.cid;if(dados.medico)document.getElementById('p-med').value=dados.medico;if(dados.crm)document.getElementById('p-crm').value=dados.crm;if(dados.evolucao)document.getElementById('evolucao').value=dados.evolucao;['dieta','acesso','sf','med','monitor'].forEach(key=>{DB[key]=[];});['dieta-tags','acesso-tags','sf-tags','med-tags','monitor-tags'].forEach(id=>{document.getElementById(id).innerHTML='';});if(dados.medicamentos&&dados.medicamentos.length>0){dados.medicamentos.forEach(med=>{mkTag(med.toUpperCase(),'tag-m','med-tags','med');});}pacienteAtualId=null;toast('✓ Prescrição importada de Word!','#256b14');}
+function parsePrescrição(texto){const dados={nome:'',leito:'',idade:'',cid:'',medico:'',crm:'',evolucao:'',medicamentos:[]};const linhas=texto.split('\n');let emPrescrição=false;let emEvolução=false;for(let i=0;i<linhas.length;i++){const linha=linhas[i].trim();if(!linha)continue;if(linha.toUpperCase().includes('PACIENTE:')||linha.toUpperCase().includes('NOME:')){const match=linha.match(/(?:PACIENTE|NOME):\s*(.+?)(?:\||$)/i);if(match)dados.nome=match[1].trim();}if(linha.toUpperCase().includes('LEITO')){const match=linha.match(/LEITO[:\s]+(\w+)/i);if(match)dados.leito=match[1].trim();}if(linha.toUpperCase().includes('IDADE')){const match=linha.match(/IDADE[:\s]+(\d+)/i);if(match)dados.idade=match[1].trim()+' anos';}if(linha.toUpperCase().includes('DIAGNÓSTICO')||linha.toUpperCase().includes('CID')){const match=linha.match(/(?:DIAGNÓSTICO|CID)[:\s]+(.+?)(?:\||$)/i);if(match)dados.cid=match[1].trim();}if(linha.toUpperCase().includes('MÉDICO')){const match=linha.match(/MÉDICO[:\s]+(.+?)(?:\||CRM|$)/i);if(match)dados.medico=match[1].trim();}if(linha.toUpperCase().includes('CRM')){const match=linha.match(/CRM[:\s]+(\d+[\/\w]*)/i);if(match)dados.crm=match[1].trim();}if(linha.toUpperCase().includes('EVOLUÇÃO')){emEvolução=true;emPrescrição=false;continue;}if(linha.toUpperCase().includes('PRESCRIÇÃO')){emPrescrição=true;emEvolução=false;continue;}if(emEvolução&&!linha.toUpperCase().includes('PRESCRIÇÃO')){dados.evolucao+=(dados.evolucao?'\n':'')+linha;}if(emPrescrição||linha.match(/^\d+\.|mg|ml|cp|comp|dose|ev|vo/i)){const cleanLine=linha.replace(/^\d+\.\s*/,'');if(cleanLine.length>5&&!cleanLine.toUpperCase().includes('ASSINATURA')){dados.medicamentos.push(cleanLine);}}}return dados;}
+async function exportarWord(){if(!window.api){alert('Importar/Exportar Word disponível apenas no app instalado.');return;}const all=[...DB.dieta,...DB.acesso,...DB.sf,...DB.med,...DB.monitor].filter(Boolean);const dados={nome:v('p-nome'),leito:v('p-leito'),idade:v('p-idade'),cid:v('p-cid'),medico:v('p-med'),crm:v('p-crm'),data:v('p-data'),evolucao:v('evolucao'),itens:all};const result=await window.api.word.exportar(dados);if(result.cancelado)return;if(result.erro){alert('Erro ao criar arquivo: '+result.mensagem);return;}toast('✓ Prescrição exportada para Word!','#256b14');}
+	function abrirMedicacaoCustomizada(){document.getElementById('custom-med-overlay').style.display='flex';document.getElementById('cm-nome').focus();}
+	function fecharMedicacaoCustomizada(){document.getElementById('custom-med-overlay').style.display='none';document.getElementById('cm-nome').value='';document.getElementById('cm-dose').value='';document.getElementById('cm-dia').value='';document.getElementById('cm-via').value='VO';document.getElementById('cm-int').value='8/8h';}
+	function adicionarMedicacaoCustomizada(){const nome=document.getElementById('cm-nome').value.trim();const dose=document.getElementById('cm-dose').value.trim();const via=document.getElementById('cm-via').value;const intervalo=document.getElementById('cm-int').value;const dia=document.getElementById('cm-dia').value.trim();if(!nome||!dose||!via||!intervalo){toast('Preencha Nome, Dose, Via e Intervalo!','#b94a00');return;}const texto=(nome+(dose?' — '+dose:'')+' '+via+' '+intervalo+(dia?' ('+dia+')':'')).toUpperCase();mkTag(texto,'tag-m','med-tags','med');toast('Medicacao customizada adicionada!','#256b14');fecharMedicacaoCustomizada();}
+	document.getElementById('custom-med-overlay').addEventListener('click',function(e){if(e.target===this)fecharMedicacaoCustomizada();});
+</script>
+</body>
+</html>

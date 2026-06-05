@@ -1,0 +1,524 @@
+{
+  "medicamentos": [
+    {
+      "categoria": "ANALGÉSICOS / ANTITÉRMICOS",
+      "itens": [
+        {"nome": "Dipirona 500mg", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Dipirona 500mg/mL", "dose": "2mL (1g)", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Dipirona 1000mg", "dose": "1000mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Paracetamol 500mg", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Paracetamol 1g EV", "dose": "1g", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Ibuprofeno 200mg", "dose": "200mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Ibuprofeno 400mg", "dose": "400mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Ibuprofeno 600mg", "dose": "600mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Cetorolaco 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Cetorolaco 30mg EV", "dose": "30mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Cetoprofeno 100mg EV", "dose": "100mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Cetoprofeno 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Nimesulida 100mg", "dose": "100mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Piroxicam 20mg", "dose": "20mg", "via": "VO/IM", "intervalo": "1x/dia"},
+        {"nome": "Ácido acetilsalicílico 500mg", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Ácido acetilsalicílico 100mg", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Meloxicam 15mg", "dose": "15mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Meloxicam 7,5mg", "dose": "7,5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Indometacina 50mg", "dose": "50mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Naproxeno 500mg", "dose": "500mg", "via": "VO", "intervalo": "12/12h"}
+      ]
+    },
+    {
+      "categoria": "OPIOIDES / ANALGESIA FORTE",
+      "itens": [
+        {"nome": "Morfina 2mg EV", "dose": "2mg", "via": "EV", "intervalo": "4/4h S/N"},
+        {"nome": "Morfina 4mg SC", "dose": "4mg", "via": "SC", "intervalo": "4/4h S/N"},
+        {"nome": "Morfina 10mg SC", "dose": "10mg", "via": "SC", "intervalo": "4/4h S/N"},
+        {"nome": "Morfina 30mg VO", "dose": "30mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Morfina 60mg VO", "dose": "60mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Tramadol 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Tramadol 100mg EV", "dose": "100mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Tramadol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Fentanil patch 12mcg", "dose": "12mcg/h", "via": "transdérmico", "intervalo": "trocar 72h"},
+        {"nome": "Fentanil patch 25mcg", "dose": "25mcg/h", "via": "transdérmico", "intervalo": "trocar 72h"},
+        {"nome": "Fentanil patch 50mcg", "dose": "50mcg/h", "via": "transdérmico", "intervalo": "trocar 72h"},
+        {"nome": "Fentanil patch 100mcg", "dose": "100mcg/h", "via": "transdérmico", "intervalo": "trocar 72h"},
+        {"nome": "Codeína 30mg + Paracetamol 500mg", "dose": "30+500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Oxicodona 10mg", "dose": "10mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Oxicodona 5mg", "dose": "5mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Codeína 30mg", "dose": "30mg", "via": "VO", "intervalo": "4/4h"},
+        {"nome": "Meperidina 50mg EV", "dose": "50mg", "via": "EV", "intervalo": "4/4h"}
+      ]
+    },
+    {
+      "categoria": "ANTIEMÉTICOS",
+      "itens": [
+        {"nome": "Ondansetrona 4mg EV", "dose": "4mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Ondansetrona 8mg EV", "dose": "8mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Ondansetrona 8mg VO", "dose": "8mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ondansetrona 4mg VO", "dose": "4mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Metoclopramida 5mg EV", "dose": "5mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Metoclopramida 10mg EV", "dose": "10mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Metoclopramida 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Domperidona 10mg", "dose": "10mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Dexametasona 4mg EV", "dose": "4mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Dexametasona 4mg VO", "dose": "4mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Dexametasona 2mg VO", "dose": "2mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Granisetrona 2mg EV", "dose": "2mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Droperidol 2,5mg EV", "dose": "2,5mg", "via": "EV", "intervalo": "4/4h"},
+        {"nome": "Prometeazina 12,5mg EV", "dose": "12,5mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Prometeazina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "PROTETOR GÁSTRICO",
+      "itens": [
+        {"nome": "Omeprazol 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Omeprazol 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Omeprazol 40mg EV", "dose": "40mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Omeprazol 20mg EV", "dose": "20mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Pantoprazol 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Pantoprazol 40mg EV", "dose": "40mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Lansoprazol 30mg VO", "dose": "30mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Lansoprazol 15mg VO", "dose": "15mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Esomeprazol 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Esomeprazol 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Esomeprazol 40mg EV", "dose": "40mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Famotidina 20mg EV", "dose": "20mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Famotidina 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Ranitidina 150mg VO", "dose": "150mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ranitidina 50mg EV", "dose": "50mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Sucralfato 1g", "dose": "1g", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Hidróxido de Magnésio", "dose": "30mL", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "ANTIBIÓTICOS BETA-LACTÂMICOS",
+      "itens": [
+        {"nome": "Amoxicilina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Amoxicilina 1g VO", "dose": "1g", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Amoxicilina + Clavulanato 500+125mg", "dose": "500+125mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Ampicilina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Ampicilina 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Ampicilina 1g EV", "dose": "1g", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Cefadroxila 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Cefadroxila 1g VO", "dose": "1g", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Cefalexina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Cefalexina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Cefalexina 1g VO", "dose": "1g", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Cefuroxima 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Cefuroxima 750mg EV", "dose": "750mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Cefuroxima 1,5g EV", "dose": "1,5g", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Ceftriaxona 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Ceftriaxona 1g EV", "dose": "1g", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Ceftriaxona 2g EV", "dose": "2g", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Ceftazidima 1g EV", "dose": "1g", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Ceftazidima 2g EV", "dose": "2g", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Meropenem 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Meropenem 1g EV", "dose": "1g", "via": "EV", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "ANTIBIÓTICOS AMINOGLICOSÍDEOS",
+      "itens": [
+        {"nome": "Gentamicina 80mg IM/EV", "dose": "80mg", "via": "IM/EV", "intervalo": "8/8h"},
+        {"nome": "Gentamicina 160mg IM/EV", "dose": "160mg", "via": "IM/EV", "intervalo": "1x/dia"},
+        {"nome": "Amicacina 250mg IM/EV", "dose": "250mg", "via": "IM/EV", "intervalo": "8/8h"},
+        {"nome": "Amicacina 500mg IM/EV", "dose": "500mg", "via": "IM/EV", "intervalo": "8/8h"},
+        {"nome": "Tobramicina 80mg IM/EV", "dose": "80mg", "via": "IM/EV", "intervalo": "8/8h"},
+        {"nome": "Neomicina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Espectinomicina 2g IM", "dose": "2g", "via": "IM", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "ANTIBIÓTICOS MACROLÍDEOS",
+      "itens": [
+        {"nome": "Azitromicina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Azitromicina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Eritromicina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Eritromicina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Claritromicina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Claritromicina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Roxitromicina 150mg VO", "dose": "150mg", "via": "VO", "intervalo": "12/12h"}
+      ]
+    },
+    {
+      "categoria": "ANTIBIÓTICOS FLUOROQUINOLONAS",
+      "itens": [
+        {"nome": "Norfloxacina 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ofloxacina 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ofloxacina 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ciprofloxacina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ciprofloxacina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ciprofloxacina 400mg EV", "dose": "400mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Ciprofloxacina 600mg EV", "dose": "600mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Levofloxacina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Levofloxacina 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Moxifloxacina 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Gemifloxacina 320mg VO", "dose": "320mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "OUTROS ANTIBIÓTICOS",
+      "itens": [
+        {"nome": "Trimetoprim + Sulfametoxazol 160+800mg", "dose": "160+800mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Trimetoprim + Sulfametoxazol 80+400mg", "dose": "80+400mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Clindamicina 150mg VO", "dose": "150mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Clindamicina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Clindamicina 300mg EV", "dose": "300mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Clindamicina 600mg EV", "dose": "600mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Vancomicina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Vancomicina 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Vancomicina 1g EV", "dose": "1g", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Metronidazol 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Metronidazol 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Metronidazol 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Linezolida 600mg VO/EV", "dose": "600mg", "via": "VO/EV", "intervalo": "12/12h"},
+        {"nome": "Daptomicina 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "ANTIFÚNGICOS",
+      "itens": [
+        {"nome": "Fluconazol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Fluconazol 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Fluconazol 400mg VO/EV", "dose": "400mg", "via": "VO/EV", "intervalo": "1x/dia"},
+        {"nome": "Itraconazol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Cetoconazol 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Miconazol 20mg EV", "dose": "20mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Anfotericina B 50mg EV", "dose": "50mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Nistatina 500.000UI VO", "dose": "500.000UI", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Terbinafina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Voriconazol 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "12/12h"}
+      ]
+    },
+    {
+      "categoria": "ANTIVIRAIS",
+      "itens": [
+        {"nome": "Aciclovir 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "5x/dia"},
+        {"nome": "Aciclovir 800mg VO", "dose": "800mg", "via": "VO", "intervalo": "4x/dia"},
+        {"nome": "Aciclovir 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Valaciclovir 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Valaciclovir 1000mg VO", "dose": "1000mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Ganciclovir 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Oseltamivir 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Ribavirina 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "3x/dia"},
+        {"nome": "Lamivudina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Zidovudina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "ANTI-HIPERTENSIVOS",
+      "itens": [
+        {"nome": "Enalapril 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Enalapril 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Lisinopril 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Lisinopril 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Ramipril 2,5mg VO", "dose": "2,5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Ramipril 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Losartana 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Losartana 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Losartana 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Valsartana 80mg VO", "dose": "80mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Valsartana 160mg VO", "dose": "160mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Irbesartana 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Irbesartana 150mg VO", "dose": "150mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Candessartana 8mg VO", "dose": "8mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Atenolol 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Atenolol 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Atenolol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Metoprolol 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Metoprolol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Propranolol 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Propranolol 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Nifedipina 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Nifedipina 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Amlodipina 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Amlodipina 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Diltiazem 30mg VO", "dose": "30mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Diltiazem 60mg VO", "dose": "60mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Verapamil 80mg VO", "dose": "80mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Verapamil 120mg VO", "dose": "120mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Hidralazina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Hidralazina 50mg EV", "dose": "50mg", "via": "EV", "intervalo": "4/4h"}
+      ]
+    },
+    {
+      "categoria": "DIURÉTICOS",
+      "itens": [
+        {"nome": "Furosemida 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Furosemida 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Furosemida 80mg VO", "dose": "80mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Furosemida 40mg EV", "dose": "40mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Furosemida 80mg EV", "dose": "80mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Hidroclorotiazida 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Hidroclorotiazida 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Espironolactona 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Espironolactona 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Amilorida 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Torasemida 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Torasemida 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Bumetanida 0,5mg EV", "dose": "0,5mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Ácido etacrínico 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "ANTIDIABÉTICOS",
+      "itens": [
+        {"nome": "Metformina 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Metformina 1000mg VO", "dose": "1000mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Glibenclamida 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Glipizida 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Gliclazida 80mg VO", "dose": "80mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Gliclazida 30mg VO", "dose": "30mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Insulina Regular 100UI/mL EV/SC", "dose": "10UI", "via": "EV/SC", "intervalo": "8/8h"},
+        {"nome": "Insulina NPH 100UI/mL SC", "dose": "20UI", "via": "SC", "intervalo": "1x/dia"},
+        {"nome": "Insulina Glargina 100UI/mL SC", "dose": "10UI", "via": "SC", "intervalo": "1x/dia"},
+        {"nome": "Pioglitazona 15mg VO", "dose": "15mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Pioglitazona 30mg VO", "dose": "30mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Acarbose 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Acarbose 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Sitagriptina 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Saxagliptina 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "CARDIOVASCULAR / HEMODINÂMICA",
+      "itens": [
+        {"nome": "Dopamina 200mg EV", "dose": "5-20mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Dobutamina 250mg EV", "dose": "2-20mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Epinefrina 1mg EV", "dose": "0,1-0,5mg", "via": "EV", "intervalo": "5-10min S/N"},
+        {"nome": "Norepinefrina 4mg EV", "dose": "0,5-30mcg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Milrinona 10mg EV", "dose": "0,25-0,75mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Nitroglicerina 5mg EV", "dose": "5-100mcg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Nitroprussiato 50mg EV", "dose": "0,5-10mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Esmolol 10mg EV", "dose": "50-300mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Labetalol 100mg EV", "dose": "20mg em bolus", "via": "EV", "intervalo": "10min S/N"},
+        {"nome": "Digoxina 0,25mg VO", "dose": "0,25mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Digoxina 0,5mg EV", "dose": "0,5mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Amiodarona 150mg EV", "dose": "150mg", "via": "EV", "intervalo": "10min S/N"},
+        {"nome": "Amiodarona 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Atorvastatina 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Atorvastatina 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Simvastatina 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Sinvastatina 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "CORTICOIDES / ANTI-INFLAMATÓRIOS SISTÊMICOS",
+      "itens": [
+        {"nome": "Dexametasona 0,5mg VO", "dose": "0,5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Dexametasona 2mg VO", "dose": "2mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Dexametasona 4mg VO/EV", "dose": "4mg", "via": "VO/EV", "intervalo": "1x/dia"},
+        {"nome": "Dexametasona 10mg EV", "dose": "10mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Prednisolona 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Prednisolona 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Prednisona 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Prednisona 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Prednisona 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Metilprednisolona 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Metilprednisolona 125mg EV", "dose": "125mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Metilprednisolona 250mg EV", "dose": "250mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Hidrocortisona 50mg EV", "dose": "50mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Hidrocortisona 100mg EV", "dose": "100mg", "via": "EV", "intervalo": "6/6h"},
+        {"nome": "Betametasona 0,5mg VO", "dose": "0,5mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Triancinolona 4mg VO", "dose": "4mg", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "BRONCODILATADORES / DESCONGESTIONANTES",
+      "itens": [
+        {"nome": "Salbutamol 100mcg inalatório", "dose": "1-2 doses", "via": "inalação", "intervalo": "4/4h S/N"},
+        {"nome": "Salbutamol 2mg VO", "dose": "2mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Salbutamol 5mg/mL nebulização", "dose": "2,5-5mg", "via": "nebulização", "intervalo": "4/4h"},
+        {"nome": "Salbutamol 0,5mg/mL EV", "dose": "5-10mcg/kg", "via": "EV", "intervalo": "4/4h"},
+        {"nome": "Fenoterol 100mcg inalatório", "dose": "1-2 doses", "via": "inalação", "intervalo": "6/6h"},
+        {"nome": "Terbutalina 2,5mg VO", "dose": "2,5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Terbutalina 0,25mg SC", "dose": "0,25mg", "via": "SC", "intervalo": "15-30min S/N"},
+        {"nome": "Ipratrópio 20mcg inalatório", "dose": "1-2 doses", "via": "inalação", "intervalo": "6/6h"},
+        {"nome": "Teofilina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Teofilina 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Montelucaste 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Zafirlucaste 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Budesonida 200mcg inalatório", "dose": "1-2 doses", "via": "inalação", "intervalo": "12/12h"},
+        {"nome": "Fluticasona 125mcg inalatório", "dose": "2 doses", "via": "inalação", "intervalo": "12/12h"}
+      ]
+    },
+    {
+      "categoria": "PSICOTRÓPICOS / ANTIDEPRESSIVOS",
+      "itens": [
+        {"nome": "Fluoxetina 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Fluoxetina 40mg VO", "dose": "40mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Sertralina 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Sertralina 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Paroxetina 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Citalopram 20mg VO", "dose": "20mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Escitalopram 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Venlafaxina 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Duloxetina 60mg VO", "dose": "60mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Bupropiona 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Amitriptilina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Amitriptilina 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Nortriptilina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Imipramina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Clomipramina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Trazodona 50mg VO", "dose": "50mg", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "NEUROLÉPTICOS / ANTIPSICÓTICOS",
+      "itens": [
+        {"nome": "Haloperidol 1mg VO", "dose": "1mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Haloperidol 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Haloperidol 5mg IM", "dose": "5mg", "via": "IM", "intervalo": "8/8h"},
+        {"nome": "Clorpromazina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Clorpromazina 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Levomepromazina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Olanzapina 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Olanzapina 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Quetiapina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Quetiapina 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Risperidona 1mg VO", "dose": "1mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Risperidona 2mg VO", "dose": "2mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Amisulprida 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Amisulprida 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Clozapina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Paliperidona 6mg VO", "dose": "6mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "ANSIOLÍTICOS / SEDATIVOS",
+      "itens": [
+        {"nome": "Diazepam 2mg VO", "dose": "2mg", "via": "VO", "intervalo": "8/8h S/N"},
+        {"nome": "Diazepam 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Diazepam 10mg EV", "dose": "10mg", "via": "EV", "intervalo": "4/4h S/N"},
+        {"nome": "Lorazepam 0,5mg VO", "dose": "0,5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Lorazepam 1mg VO", "dose": "1mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Lorazepam 2mg IV", "dose": "2mg", "via": "IV", "intervalo": "6/6h"},
+        {"nome": "Alprazolam 0,25mg VO", "dose": "0,25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Alprazolam 0,5mg VO", "dose": "0,5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Midazolam 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Midazolam 5mg/mL EV", "dose": "1-2mg", "via": "EV", "intervalo": "5-10min S/N"},
+        {"nome": "Propofol 20mg/mL EV", "dose": "1-2mg/kg", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Tiopental 500mg EV", "dose": "3-5mg/kg", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Buspirona 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Buspirona 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "8/8h"}
+      ]
+    },
+    {
+      "categoria": "DROGAS VASOATIVAS",
+      "itens": [
+        {"nome": "Adrenalina 1mg/mL", "dose": "0,3-0,5mg", "via": "IM", "intervalo": "5-15min S/N"},
+        {"nome": "Fenilefrina 10mg/mL", "dose": "100-180mcg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Vasopressina 20UI/mL", "dose": "0,04UI/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Nitroprussiato de sódio 50mg", "dose": "0,5-10mcg/kg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Nitroglicerina 0,6mg sublingual", "dose": "0,6mg", "via": "sublingual", "intervalo": "5min S/N"},
+        {"nome": "Nitroglicerina 5mg EV", "dose": "5-100mcg/min", "via": "EV", "intervalo": "contínuo"},
+        {"nome": "Isoproterenol 0,2mg EV", "dose": "0,5-5mcg/min", "via": "EV", "intervalo": "contínuo"}
+      ]
+    },
+    {
+      "categoria": "ANTICONVULSIVANTES",
+      "itens": [
+        {"nome": "Fenitoína 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Fenitoína 100mg/5mL EV", "dose": "15-18mg/kg", "via": "EV", "intervalo": "1ª dose"},
+        {"nome": "Fenobarbital 15mg VO", "dose": "15mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Fenobarbital 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Fenobarbital 100mg EV", "dose": "10-15mg/kg", "via": "EV", "intervalo": "1ª dose"},
+        {"nome": "Carbamazepina 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Ácido valproico 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Ácido valproico 500mg/5mL EV", "dose": "15mg/kg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Lamotrigina 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Lamotrigina 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Levetiracetam 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Levetiracetam 500mg/5mL EV", "dose": "500mg", "via": "EV", "intervalo": "12/12h"},
+        {"nome": "Gabapentina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Pregabalina 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Topiramato 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Oxcarbazepina 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Benzodiazepínicos (ver ansiolíticos)", "dose": "conforme prescrição", "via": "VO/EV/IM", "intervalo": "conforme necessário"}
+      ]
+    },
+    {
+      "categoria": "REPOSIÇÃO ELETROLÍTICA",
+      "itens": [
+        {"nome": "Cloreto de Sódio 0,9% EV", "dose": "500-1000mL", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Cloreto de Sódio 3% EV", "dose": "100-200mL", "via": "EV", "intervalo": "lentamente"},
+        {"nome": "Soro glicosado 5% EV", "dose": "500-1000mL", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Ringer com lactato EV", "dose": "500-1000mL", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Potássio 20mEq EV", "dose": "10-20mEq", "via": "EV", "intervalo": "conforme necessário"},
+        {"nome": "Potássio 10mEq VO", "dose": "10-20mEq", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Magnésio 1g EV", "dose": "1-2g", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Cálcio 10% 10mL EV", "dose": "10mL", "via": "EV", "intervalo": "4/4h S/N"},
+        {"nome": "Bicarbonato de sódio 8,4% EV", "dose": "1-2mEq/kg", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Fósforo EV", "dose": "0,5-1mmol/kg", "via": "EV", "intervalo": "segundo necessário"}
+      ]
+    },
+    {
+      "categoria": "DESINFETANTES / SOLUÇÕES LOCAIS",
+      "itens": [
+        {"nome": "Álcool 70%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Clorexidina 0,12%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Iodo 10%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Povidine-iodo 10%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Água oxigenada 3%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Permanganato de potássio 1:1000", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Enxofre precipitado 10%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Merthiolate 1%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Benzoato de benzila 10%", "dose": "tópico", "via": "tópica", "intervalo": "segundo necessário"}
+      ]
+    },
+    {
+      "categoria": "HEMOSTÁTICOS / COAGULANTES",
+      "itens": [
+        {"nome": "Vitamina K1 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Vitamina K1 10mg EV", "dose": "10mg", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Ácido tranexâmico 500mg EV", "dose": "500mg", "via": "EV", "intervalo": "8/8h"},
+        {"nome": "Ácido tranexâmico 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Trombina tópica", "dose": "500-1000UI", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Fibrina tópica", "dose": "0,5-1mL", "via": "tópica", "intervalo": "segundo necessário"},
+        {"nome": "Heparina 5.000UI SC", "dose": "5.000UI", "via": "SC", "intervalo": "12/12h"},
+        {"nome": "Heparina 10.000UI EV", "dose": "80UI/kg bolus", "via": "EV", "intervalo": "segundo necessário"},
+        {"nome": "Enoxaparina 40mg SC", "dose": "40mg", "via": "SC", "intervalo": "1x/dia"},
+        {"nome": "Enoxaparina 60mg SC", "dose": "60mg", "via": "SC", "intervalo": "12/12h"},
+        {"nome": "Warfarina 5mg VO", "dose": "5mg", "dose": "VO", "intervalo": "1x/dia"},
+        {"nome": "Varfarina 1mg VO", "dose": "1mg", "via": "VO", "intervalo": "1x/dia"}
+      ]
+    },
+    {
+      "categoria": "NUTRIÇÃO / SUPLEMENTAÇÃO",
+      "itens": [
+        {"nome": "Vitamina C 500mg VO", "dose": "500mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Vitamina C 1g EV", "dose": "1g", "via": "EV", "intervalo": "1x/dia"},
+        {"nome": "Vitamina B1 50mg IM/EV", "dose": "50mg", "via": "IM/EV", "intervalo": "1x/dia"},
+        {"nome": "Vitamina B6 50mg IM/EV", "dose": "50mg", "via": "IM/EV", "intervalo": "1x/dia"},
+        {"nome": "Vitamina B12 1000mcg IM", "dose": "1000mcg", "via": "IM", "intervalo": "mensal"},
+        {"nome": "Ácido fólico 5mg VO", "dose": "5mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Vitamina A 10.000UI VO", "dose": "10.000UI", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Vitamina D 1000UI VO", "dose": "1000UI", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Vitamina E 400UI VO", "dose": "400UI", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Ferro 325mg VO", "dose": "325mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Ferro 100mg IM", "dose": "100mg", "via": "IM", "intervalo": "segundo necessário"},
+        {"nome": "Zinco 10mg VO", "dose": "10mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Selênio 100mcg VO", "dose": "100mcg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Albumina 25% 20mL EV", "dose": "20mL", "via": "EV", "intervalo": "segundo necessário"}
+      ]
+    },
+    {
+      "categoria": "OUTROS",
+      "itens": [
+        {"nome": "Ranitidina 150mg VO", "dose": "150mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Cimetidina 200mg VO", "dose": "200mg", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Captopril 25mg VO", "dose": "25mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Ticlopidina 250mg VO", "dose": "250mg", "via": "VO", "intervalo": "12/12h"},
+        {"nome": "Clopidogrel 75mg VO", "dose": "75mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Pentoxifilina 400mg VO", "dose": "400mg", "via": "VO", "intervalo": "8/8h"},
+        {"nome": "Aloproninol 100mg VO", "dose": "100mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Alopurinol 300mg VO", "dose": "300mg", "via": "VO", "intervalo": "1x/dia"},
+        {"nome": "Colchicina 0,5mg VO", "dose": "0,5mg", "dose": "VO", "intervalo": "8/8h"},
+        {"nome": "Fenoximetilpenicilina 800.000UI VO", "dose": "800.000UI", "via": "VO", "intervalo": "6/6h"},
+        {"nome": "Aciclovir oftálmico 3%", "dose": "tópico", "via": "oftálmica", "intervalo": "4/4h"},
+        {"nome": "Timolol 0,5% oftálmico", "dose": "1-2 gotas", "via": "oftálmica", "intervalo": "12/12h"},
+        {"nome": "Pilocarpina 1% oftálmico", "dose": "1-2 gotas", "via": "oftálmica", "intervalo": "8/8h"},
+        {"nome": "Norfloxacina oftálmico", "dose": "1-2 gotas", "via": "oftálmica", "intervalo": "4/4h"}
+      ]
+    }
+  ]
+}

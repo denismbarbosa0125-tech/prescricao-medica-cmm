@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-old-*/
+dist-pkg/
+.env
+dados.json
+data/
+*.log
+.DS_Store
